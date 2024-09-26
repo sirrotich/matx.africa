@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensures full height of the page */
+    background-color: #fff; /* White background for the whole page */
+    font-family: 'Bai Jamjuree'; /* Set font */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Slightly top-centered */
+    margin-top: -60%; /* Push the form slightly towards the top */
+}
+
+.login-form-container {
+    width: 480px;
+    height: auto; /* Hug content */
+    padding: 32px; /* Spacing around the form */
+    background-color: #EBEBE6; /* Subtle background for the form */
+    border-radius: 32px; /* Smooth, rounded corners */
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: left; /* Align text to the left */
+    gap: 16px; /* Adjust gap between items */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start (left) */
+    margin-bottom: -80px;
+}
+
+/* Title */
+.login-title {
+    width: 100%; /* Make it full width */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px; /* Reduced spacing */
+    color: #000; /* Change to black for better contrast */
+}
+
+/* OTP Sent Message */
+.otp-sent-message {
+    width: 100%; /* Make it full width */
+    opacity: 0.75;
+    font-size: 13px;
+    color: #000;
+    margin-bottom: 16px; /* Adjust spacing */
+    font-weight: 400;
+}
+
+/* OTP Input Container */
+.otp-input-container {
+    display: flex;
+    gap: 4px; /* Adjust the gap between OTP inputs */
+}
+
+.otp-input-container input {
+    width: 59.33px; /* Fixed width for OTP inputs */
+    height: 88px; /* Fixed height for OTP inputs */
+    padding: 16px; /* Adjust padding */
+    border-radius: 16px; /* Rounded corners */
+    border: 2px solid #ccc; /* Light gray border */
+    background-color: white; /* White background */
+    color: black; /* Text color for input */
+    font-size: 24px; /* Increase font size for better visibility */
+    text-align: center; /* Center the text */
+    margin-left: 5px;
+}
+
+/* Tiny placeholder styles */
+.otp-input-container input::placeholder {
+    font-size: 12px; /* Tiny placeholder size */
+    color: #bbb; /* Placeholder color */
+}
+
+/* Focus effect for OTP input */
+.otp-input-container input:focus {
+    outline: none; /* Remove default outline */
+    border-color: #53D5FF; /* Change border color on focus */
+}
+
+
+/* Next Button */
+.send-code-button {
+    width: 305px; /* Fixed width */
+    height: 56px; /* Fixed height */
+    padding: 16px 24px; /* Adjust padding */
+    gap: 12px; /* Space between icon and text */
+    border-radius: 360px; /* Fully rounded */
+    background: rgba(0, 74, 76, 1); /* Background color */
+    display: flex; /* Ensure flex properties for centering */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    margin: 4px auto; /* Center the button and give some space above and below */
+    color: #fff; /* Text color for button */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px;
+}
+
+.send-code-button:hover {
+    background-color: #083f34; /* Darker shade on hover */
+}
+
+/* Footer Text */
+.footer-text {
+    display: flex;
+    flex-direction: column; /* Stack terms and conditions */
+    align-items: flex-start; /* Align to the left */
+    width: 100%; /* Full width for footer */
+    margin-left: 20%;
+    color: black; /* Black color for the text */
+    text-align: center; /* Center the text */
+    font-weight:300;
+    font-size: 16px;
+
+}
+
+.terms-text {
+    color: #6e6e6e; /* Gray color for terms */
+    opacity: 0.75; /* Slight opacity for terms text */
+    margin-left: 8%;
+    color: #000;
+    font-weight: 400;
+    font-weight: 600;
+
+}
+
+
+/* Resend Code Text */
+.resend-code-text {
+    margin-top: 20px; /* Space above the text */
+    font-size: 14px; /* Font size */
+    font-weight: 200;
+    margin-left: 20%;
+    color: black; /* Black color for the text */
+    text-align: center; /* Center the text */
+}
+
+.resend-link {
+    color: black; /* Darker shade for the link */
+    font-weight: 400;
+    cursor: pointer; /* Pointer cursor for hover */
+}
+
+.resend-link:hover {
+    color: #001a33; /* Darker shade on hover */
+}

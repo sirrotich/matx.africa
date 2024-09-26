@@ -1,0 +1,121 @@
+/* Dashboard.css */
+.dashboard-container {
+    display: flex;
+    width: 100vw; /* Responsive to full width */
+    height: 100vh; /* Responsive to full height */
+    background-color: rgba(250, 250, 249, 1);
+    gap: 12px;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 337px; /* Make width slightly smaller */
+    min-width: 240px; /* Ensures minimum width on smaller screens */
+    height: 100vh; /* Ensure sidebar takes full height of the viewport */
+    background-color: rgba(235, 235, 230, 1);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items at the top */
+    overflow-y: auto; /* Make sidebar scrollable when content overflows */
+}
+
+/* Logo Styling */
+.logo-container {
+    padding: 0 0 32px 0;
+    width: 400px; /* Ensure logo fills available width */
+}
+
+.sidebar-logo {
+    width: 120px; /* Fill width of container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 33px; /* Limit height to prevent overflow */
+    border-radius: 86.4px 0 0 0;
+    opacity: 1;
+    margin-bottom: -10px;
+    margin-left: 20px;
+    color: rgba(0, 74, 76, 1);
+}
+
+/* Sidebar Items */
+.sidebar-items {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    width: 289px;
+    height: 64px;
+    gap: 20px; /* Space before icons */
+    border-radius: 16px; /* Equivalent to var(--RadiusRadius-mg16) */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: rgba(235, 235, 230, 1);
+    color: rgba(0, 0, 0, 1); /* Default text color */
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 16px;
+    font-weight: 650;
+    margin-left: -20px;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(210, 210, 205, 1); /* Hover effect */
+}
+
+.sidebar-item.selected {
+    background-color: white; /* Background color when selected */
+    color: rgba(0, 0, 0, 1); /* Change text color to black when selected */
+}
+
+.sidebar-item-icon {
+    width: 24px;
+    height: 24px;
+    color: #083f34;
+    margin-left: 25px;
+}
+
+.icon-right {
+    margin-left: auto;
+    color: inherit; /* Ensure icon color matches text color */
+}
+
+/* Main Content Styling */
+.main-content {
+    flex-grow: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.top-cards, .bottom-cards {
+    display: flex;
+    gap: 16px;
+}
+
+.small-card, .large-card {
+    background-color: rgba(250, 250, 249, 1);
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.small-card {
+    height: 150px;
+    flex: 1;
+}
+
+.large-card {
+    height: 300px;
+    flex: 1;
+}
+
+.graph-placeholder {
+    background-color: rgba(220, 220, 215, 1);
+    flex-grow: 1;
+    margin-top: 16px;
+    border-radius: 12px;
+}
