@@ -1,11 +1,11 @@
-// Dashboard.jsx
 import React, { useState } from 'react';
 import '../styles/Dashboard.css';
-import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt } from 'react-icons/fa'; // Importing necessary icons
+import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Importing necessary icons
 import logo from '../assets/Vector.png'; // Update the path based on your project structure
 
 const Dashboard = () => {
   const [selectedItem, setSelectedItem] = useState(0); // Default selected item to the first one
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // State for toggling sidebar collapse
 
   const sidebarItems = [
     { text: 'Overview', icon: <FaChartArea /> },      // Container icon for Overview
@@ -21,12 +21,16 @@ const Dashboard = () => {
     setSelectedItem(index); // Set selected item to clicked index
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed); // Toggle collapse state
+  };
+
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
-      <div className="sidebar">
+      <div className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="logo-container">
-          <img src={logo} alt="Logo" className="sidebar-logo" />
+          {!isSidebarCollapsed && <img src={logo} alt="Logo" className="sidebar-logo" />}
         </div>
         <div className="sidebar-items">
           {sidebarItems.map((item, index) => (
@@ -36,9 +40,12 @@ const Dashboard = () => {
               onClick={() => handleItemClick(index)}
             >
               <div className="sidebar-item-icon">{item.icon}</div>
-              <span className="sidebar-item-text">{item.text}</span>
+              {!isSidebarCollapsed && <span className="sidebar-item-text">{item.text}</span>}
             </div>
           ))}
+        </div>
+        <div className="sidebar-toggle" onClick={toggleSidebar}>
+          <FaBars />
         </div>
       </div>
 

@@ -24,7 +24,8 @@ body {
 }
 
 .login-form-container {
-    width: 480px;
+    width: 100%; /* Set to 100% for responsiveness */
+    max-width: 480px; /* Max width to maintain layout */
     height: auto; /* Hug content */
     padding: 32px; /* Spacing around the form */
     background-color: #EBEBE6; /* Subtle background for the form */
@@ -88,10 +89,10 @@ body {
     border-color: #53D5FF; /* Change border color on focus */
 }
 
-
 /* Next Button */
 .send-code-button {
-    width: 305px; /* Fixed width */
+    width: 100%; /* Set to 100% for responsiveness */
+    max-width: 305px; /* Max width to maintain layout */
     height: 56px; /* Fixed height */
     padding: 16px 24px; /* Adjust padding */
     gap: 12px; /* Space between icon and text */
@@ -120,9 +121,8 @@ body {
     margin-left: 20%;
     color: black; /* Black color for the text */
     text-align: center; /* Center the text */
-    font-weight:300;
+    font-weight: 300;
     font-size: 16px;
-
 }
 
 .terms-text {
@@ -130,11 +130,8 @@ body {
     opacity: 0.75; /* Slight opacity for terms text */
     margin-left: 8%;
     color: #000;
-    font-weight: 400;
     font-weight: 600;
-
 }
-
 
 /* Resend Code Text */
 .resend-code-text {
@@ -154,4 +151,72 @@ body {
 
 .resend-link:hover {
     color: #001a33; /* Darker shade on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .login-page {
+        margin-top: 0; /* Remove top margin for smaller screens */
+    }
+
+    .login-form-container {
+        padding: 24px; /* Reduce padding on smaller screens */
+        margin-bottom: -60px; /* Adjust margin */
+    }
+
+    .login-title {
+        font-size: 20px; /* Slightly smaller title */
+    }
+
+    .otp-sent-message {
+        font-size: 12px; /* Smaller font size */
+    }
+
+    .otp-input-container input {
+        width: 50px; /* Adjust OTP input size for smaller screens */
+        height: 70px; /* Adjust height */
+        font-size: 20px; /* Smaller font size for input */
+    }
+
+    .send-code-button {
+        width: 100%; /* Full width button */
+        max-width: 100%; /* Ensure it scales down */
+    }
+
+    .footer-text {
+        margin-left: 0; /* Center footer text on smaller screens */
+        font-size: 14px; /* Smaller footer text */
+    }
+
+    .terms-text {
+        margin-left: 0; /* Center terms text on smaller screens */
+    }
+
+    .resend-code-text {
+        margin-left: 0; /* Center resend text on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form-container {
+        padding: 16px; /* Further reduce padding on very small screens */
+    }
+
+    .login-title {
+        font-size: 18px; /* Even smaller title */
+    }
+
+    .otp-sent-message {
+        font-size: 11px; /* Further decrease font size */
+    }
+
+    .otp-input-container input {
+        width: 45px; /* Further adjust OTP input size */
+        height: 60px; /* Further adjust height */
+        font-size: 18px; /* Further reduce font size for input */
+    }
+
+    .send-code-button {
+        height: 50px; /* Adjust button height */
+    }
 }
