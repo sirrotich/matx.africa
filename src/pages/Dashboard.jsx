@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import '../styles/Dashboard.css';
-import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars, FaUserCircle, FaArrowUp } from 'react-icons/fa'; // Importing necessary icons
+import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars, FaUserCircle, FaArrowUp, FaChevronDown } from 'react-icons/fa'; // Updated with FaChevronDown for filter icons
 import logo from '../assets/Vector.png'; // Update the path based on your project structure
 
 const Dashboard = () => {
   const [selectedItem, setSelectedItem] = useState(0); // Default selected item to the first one
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // State for toggling sidebar collapse
+
+  // States for managing filter selections
+  const [filterType, setFilterType] = useState('All Types');
+  const [filterLocation, setFilterLocation] = useState('All Locations');
+  const [filterYear, setFilterYear] = useState('This Year');
 
   const sidebarItems = [
     { text: 'Overview', icon: <FaChartArea /> },
@@ -78,7 +83,7 @@ const Dashboard = () => {
             <div className="card-subtext">As at 12:10 PM</div>
           </div>
           <div className="small-card">
-            <div className="card-text">This Month Consumption</div>
+            <div className="card-text">This Month's Consumption</div>
             <div className="card-number">
               5000 Kg<FaArrowUp className="icon-right" />
             </div>
@@ -93,11 +98,147 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Large Card */}
+        {/* Large Card with Filters */}
         <div className="large-card">
-          <h3>Total Consumption</h3>
-          {/* Graph placeholder */}
-          <div className="graph-placeholder">Graph Here</div>
+          <div className="large-card-header">
+            <h3>Total Consumption</h3>
+            <div className="filters-container">
+              <button className="filter-button">
+                {filterType} <FaChevronDown />
+              </button>
+              <button className="filter-button">
+                {filterLocation} <FaChevronDown />
+              </button>
+              <button className="filter-button">
+                {filterYear} <FaChevronDown />
+              </button>
+            </div>
+            
+          </div>
+          {/* Total consumption Graph  */}
+
+          <div class="graph-holder">
+    <div class="vertical-bar"></div>
+    <div class="months-data">
+        <div class="month-container">
+        <button class="month-button" id="jan-button" onclick="showReading('jan')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('jan')">
+                <div class="month-reading" id="jan-reading">10</div>
+            </div>
+            <div class="month-label">Jan</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="feb-button" onclick="showReading('feb')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('feb')">
+                <div class="month-reading" id="feb-reading">20</div>
+            </div>
+            <div class="month-label">Feb</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Mar</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Apr</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">May</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">June</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">July</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Aug</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Sept</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Oct</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Nov</div>
+
+        </div>
+        <div class="month-container">
+        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
+
+            <div class="graph-bar" onclick="toggleMonthReading('mar')">
+                <div class="month-reading" id="mar-reading">15</div>
+            </div>
+                        <div class="month-label">Dec</div>
+
+        </div>
+    </div>
+</div>
+
+
+        </div>
+
+        <div className='location-title'>
+            <div className='location-text'>Location Based Consumption By</div>
+            <div className='picker'>
+                <div className='segmented-picker'></div>
+            </div>
         </div>
 
         {/* Bottom Cards */}
