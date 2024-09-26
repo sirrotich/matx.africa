@@ -107,22 +107,33 @@
 
 .top-cards, .bottom-cards {
     display: flex;
-    gap: 16px;
     flex-wrap: wrap; /* Allow cards to wrap */
+    color: black;
+    font-weight: 14px;
+    font-weight: 400;
+    gap: 20px;
 }
 
-.small-card, .large-card {
-    background-color: rgba(250, 250, 249, 1);
+.small-card, .medium-card, .large-card {
+    background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
     padding: 16px;
     border-radius: 16px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     flex: 1; /* Flex-grow for responsiveness */
     min-width: 200px; /* Minimum width for cards */
     max-width: calc(100% - 16px); /* Prevent overflow from the flexbox */
+    gap: var(--SpacingSpacing-sm12);
 }
 
 .small-card {
-    height: 150px;
+    height: 105px;
+    gap: var(--SpacingSpacing-sm12);
+}
+
+.medium-card {
+    height: 173px;
+    gap: 20px;
+
 }
 
 .large-card {
@@ -135,6 +146,67 @@
     margin-top: 16px;
     border-radius: 12px;
 }
+
+/* Header Section with Profile and Selected Item Text */
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between selected text and profile */
+    width: 100%;
+    background-color: rgba(250, 250, 249, 1);
+    border-radius: 86.4px 0 0 0; /* Rounded top-left corner */
+    margin-bottom: 16px; /* Space below header section */
+}
+
+.selected-item-text {
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+}
+
+.profile-icon {
+    color: rgba(0, 74, 76, 1); /* Match the theme color */
+}
+/* Top Cards Styling */
+.top-cards {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    color: black;
+    font-weight: 400;
+  }
+  
+
+  
+  .card-text {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .card-number {
+    font-size: 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align icon to the right */
+    color: var(--text-text-primary-100, rgba(0, 74, 76, 1));
+
+  }
+  
+  .card-subtext {
+    font-size: 12px;
+    gap: 4px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -2%;
+  }
+  
+  .icon-right {
+    margin-left: 10px;
+    color: green; /* You can change this color based on your design */
+  }
+  
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {

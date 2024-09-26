@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Dashboard.css';
-import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars } from 'react-icons/fa'; // Importing necessary icons
+import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars, FaUserCircle, FaArrowUp } from 'react-icons/fa'; // Importing necessary icons
 import logo from '../assets/Vector.png'; // Update the path based on your project structure
 
 const Dashboard = () => {
@@ -8,21 +8,21 @@ const Dashboard = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // State for toggling sidebar collapse
 
   const sidebarItems = [
-    { text: 'Overview', icon: <FaChartArea /> },      // Container icon for Overview
-    { text: 'Trends', icon: <FaHeartbeat /> },         // Activity icon for Trends
-    { text: 'matX AI', icon: <FaBrain /> },            // Brain icon for matX AI
-    { text: 'Locations', icon: <FaMapMarkerAlt /> },  // Hotspot icon for Locations
-    { text: 'Notifications', icon: <FaBell /> },       // Bell icon for Notifications
-    { text: 'Settings', icon: <FaCog /> },             // Gear icon for Settings
-    { text: 'Logout', icon: <FaSignOutAlt /> },        // Logout icon
+    { text: 'Overview', icon: <FaChartArea /> },
+    { text: 'Trends', icon: <FaHeartbeat /> },
+    { text: 'matX AI', icon: <FaBrain /> },
+    { text: 'Locations', icon: <FaMapMarkerAlt /> },
+    { text: 'Notifications', icon: <FaBell /> },
+    { text: 'Settings', icon: <FaCog /> },
+    { text: 'Logout', icon: <FaSignOutAlt /> },
   ];
 
   const handleItemClick = (index) => {
-    setSelectedItem(index); // Set selected item to clicked index
+    setSelectedItem(index);
   };
 
   const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed); // Toggle collapse state
+    setIsSidebarCollapsed(!isSidebarCollapsed);
   };
 
   return (
@@ -51,23 +51,60 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <div className="main-content">
-        <div className="top-cards">
-          <div className="small-card">Card 1</div>
-          <div className="small-card">Card 2</div>
-          <div className="small-card">Card 3</div>
-          <div className="small-card">Card 4</div>
+        {/* Selected Sidebar Text and Profile */}
+        <div className="header-section">
+          <div className="selected-item-text">
+            {sidebarItems[selectedItem].text}
+          </div>
+          <div className="profile-icon">
+            <FaUserCircle size={48} />
+          </div>
         </div>
 
+        {/* Top Cards */}
+        <div className="top-cards">
+          <div className="small-card">
+            <div className="card-text">Current Available</div>
+            <div className="card-number">
+              1200 Kg<FaArrowUp className="icon-right" />
+            </div>
+            <div className="card-subtext">As at 12:10 PM</div>
+          </div>
+          <div className="small-card">
+            <div className="card-text">Today's Consumption</div>
+            <div className="card-number">
+              230 Kg<FaArrowUp className="icon-right" />
+            </div>
+            <div className="card-subtext">As at 12:10 PM</div>
+          </div>
+          <div className="small-card">
+            <div className="card-text">This Month Consumption</div>
+            <div className="card-number">
+              5000 Kg<FaArrowUp className="icon-right" />
+            </div>
+            <div className="card-subtext">12 Days</div>
+          </div>
+          <div className="small-card">
+            <div className="card-text">Monthly Average</div>
+            <div className="card-number">
+              3500 Kg<FaArrowUp className="icon-right" />
+            </div>
+            <div className="card-subtext">20 Months</div>
+          </div>
+        </div>
+
+        {/* Large Card */}
         <div className="large-card">
           <h3>Total Consumption</h3>
           {/* Graph placeholder */}
           <div className="graph-placeholder">Graph Here</div>
         </div>
 
+        {/* Bottom Cards */}
         <div className="bottom-cards">
-          <div className="small-card">Card 5</div>
-          <div className="small-card">Card 6</div>
-          <div className="small-card">Card 7</div>
+          <div className="medium-card">Card 5</div>
+          <div className="medium-card">Card 6</div>
+          <div className="medium-card">Card 7</div>
         </div>
       </div>
     </div>
