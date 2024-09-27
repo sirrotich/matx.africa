@@ -237,15 +237,66 @@ const Dashboard = () => {
         <div className='location-title'>
             <div className='location-text'>Location Based Consumption By</div>
             <div className='picker'>
-                <div className='segmented-picker'></div>
+                <div className='segmented-picker'>
+                    <button className='year-segment'>
+                        Yearly
+                    </button>
+                    <button className='month-segment'>
+                        Monthly
+                    </button>
+                    <button className='week-segment'>
+                        Weekly
+                    </button>
+                </div>
             </div>
         </div>
 
         {/* Bottom Cards */}
         <div className="bottom-cards">
-          <div className="medium-card">Card 5</div>
-          <div className="medium-card">Card 6</div>
-          <div className="medium-card">Card 7</div>
+          <div className="medium-card">
+            <div className="highest">
+                <div className='highest-data'>
+                <div className='highest-text'>Highest</div>
+                <div className='highest-kg'>325 Kg</div>
+                <div className='highest-location'>UpperHill</div>
+                </div>
+                <div className='highest-graph'>
+                    <div className='highest-elipse'>
+                        <div className='highest-percent'>46%</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
+          <div className="medium-card">
+          <div className="second-highest">
+                <div className='second-highest-data'>
+                <div className='second-highest-text'>Second Highest</div>
+                <div className='second-highest-kg'>283 Kg</div>
+                <div className='second-highest-location'>Kimathi</div>
+                </div>
+                <div className='second-highest-graph'>
+                    <div className='second-highest-elipse'>
+                        <div className='second-highest-percent'>46%</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div className="medium-card">
+          <div className="lowest">
+                <div className='lowest-data'>
+                <div className='lowest-text'>Lowest</div>
+                <div className='lowest-kg'>85 Kg</div>
+                <div className='lowest-location'>Orbit Place</div>
+                </div>
+                <div className='lowest-graph'>
+                    <div className='lowest-elipse'>
+                        <div className='lowest-percent'>12%</div>
+                    </div>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
