@@ -146,7 +146,8 @@ const Trends = () => {
         {/* Large Card with Filters */}
         <div className="large-card">
           <div className="large-card-header">
-            <h3>Total Consumption</h3>
+            <h3>Consumption Within 24 Hours</h3>
+
             <div className="filters-container">
               <button className="filter-button">
                 {filterType} <FaChevronDown />
@@ -410,14 +411,9 @@ const Trends = () => {
           <div className="medium-card">
             <div className="highest">
               <div className="highest-data">
-                <div className="highest-text">Highest</div>
-                <div className="highest-kg">325 Kg</div>
-                <div className="highest-location">UpperHill</div>
-              </div>
-              <div className="highest-graph">
-                <div className="highest-elipse">
-                  <div className="highest-percent">46%</div>
-                </div>
+                <div className="highest-text">Total</div>
+                <div className="highest-kg">200 Cylinders </div>
+                <div className="highest-location">9 tons</div>
               </div>
             </div>
           </div>
@@ -425,28 +421,28 @@ const Trends = () => {
           <div className="medium-card">
             <div className="second-highest">
               <div className="second-highest-data">
-                <div className="second-highest-text">Second Highest</div>
-                <div className="second-highest-kg">283 Kg</div>
-                <div className="second-highest-location">Kimathi</div>
-              </div>
-              <div className="second-highest-graph">
-                <div className="second-highest-elipse">
-                  <div className="second-highest-percent">46%</div>
-                </div>
+                <div className="second-highest-text"> Weekly</div>
+                <div className="second-highest-kg">4 cylinders </div>
+                <div className="second-highest-location">180 Kg</div>
               </div>
             </div>
           </div>
           <div className="medium-card">
             <div className="lowest">
               <div className="lowest-data">
-                <div className="lowest-text">Lowest</div>
-                <div className="lowest-kg">85 Kg</div>
-                <div className="lowest-location">Orbit Place</div>
+                <div className="lowest-text">Monthly</div>
+                <div className="lowest-kg">16 Cylinders Kg</div>
+                <div className="lowest-location">720 kg </div>
               </div>
-              <div className="lowest-graph">
-                <div className="lowest-elipse">
-                  <div className="lowest-percent">12%</div>
-                </div>
+            </div>
+          </div>
+
+          <div className="medium-card">
+            <div className="furthest">
+              <div className="furthest-data">
+                <div className="furthest-text">Yearly</div>
+                <div className="furthest-kg">192 Cylinders Kg</div>
+                <div className="furthest-location"> 8.6 tons </div>
               </div>
             </div>
           </div>

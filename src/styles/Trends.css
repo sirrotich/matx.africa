@@ -6,7 +6,6 @@
   background-color: rgba(250, 250, 249, 1);
   gap: 12px;
 }
-\
 /* Sidebar Styling */
 .sidebar {
   width: 337px; /* Fixed width for larger screens */
@@ -313,14 +312,9 @@
   border: none;
 }
 .location-title {
-  width: 1091px;
-  height: 78px;
-  padding: var(--SpacingSpacing-none0) var(--SpacingSpacing-lg24)
-    var(--SpacingSpacing-sm12) var(--SpacingSpacing-sm12);
-  gap: 34px;
-  opacity: 0px;
   display: flex;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
 }
 .location-text {
   font-family: Bai Jamjuree;
@@ -450,9 +444,10 @@
 
 .highest,
 .second-highest,
-.lowest {
+.lowest,
+.furthest {
   width: 288px;
-  height: 125px;
+  height: 85px;
   gap: 0px;
   justify-items: space-between;
   opacity: 0px;
@@ -462,7 +457,8 @@
 }
 .highest-data,
 .second-highest-data,
-.lowest-data {
+.lowest-data,
+.furthest-data {
   width: 132px;
   height: 76px;
   gap: var(--SpacingSpacing-none0);
@@ -471,7 +467,8 @@
 
 .highest-text,
 .second-highest-text,
-.lowest-text {
+.lowest-text,
+.furthest-text {
   font-family: Bai Jamjuree;
   font-size: 16px;
   font-weight: 600;
@@ -485,7 +482,8 @@
 }
 .highest-kg,
 .second-highest-kg,
-.lowest-kg {
+.lowest-kg,
+.furthest-kg {
   font-family: Bai Jamjuree;
   font-size: 24px;
   font-weight: 500;
@@ -496,7 +494,8 @@
 }
 .highest-location,
 .second-highest-location,
-.lowest-location {
+.lowest-location,
+.furthest-location {
   font-family: Bai Jamjuree;
   font-size: 12px;
   font-weight: 400;
@@ -510,48 +509,6 @@
   color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
 }
 
-.highest-graph,
-.second-highest-graph,
-.lowest-graph {
-  width: 120px;
-  height: 125px;
-  gap: 0px;
-  opacity: 0px;
-}
-.highest-elipse,
-.second-highest-elipse,
-.lowest-elipse {
-  width: 113px;
-  height: 113px;
-  top: 6px;
-  left: 1px;
-  gap: 0px;
-  border-radius: 50%;
-  border: 2px 0px 0px 0px;
-  opacity: 0px;
-  border: 2px solid var(--surface-surface-primary-120, #00191a);
-  margin-top: -15px;
-  margin-left: 50px;
-}
-.highest-percent,
-.second-highest-percent,
-.lowest-percent {
-  width: 56px;
-  height: 37px;
-  top: 44px;
-  left: 30px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: Bai Jamjuree;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: -0.025em;
-  text-align: center;
-  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
-  margin-left: 25px;
-  margin-top: 43px;
-}
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .Trends-container {
