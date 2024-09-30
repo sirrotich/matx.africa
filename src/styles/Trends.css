@@ -1,0 +1,599 @@
+.Trends-container {
+  display: flex;
+  flex-direction: row; /* Row for larger screens */
+  width: 100vw; /* Full width */
+  height: 100vh; /* Full height */
+  background-color: rgba(250, 250, 249, 1);
+  gap: 12px;
+}
+\
+/* Sidebar Styling */
+.sidebar {
+  width: 337px; /* Fixed width for larger screens */
+  min-width: 240px; /* Minimum width */
+  height: 100vh; /* Full height */
+  background-color: rgba(235, 235, 230, 1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items at the top */
+  overflow-y: auto; /* Scrollable sidebar */
+  transition: width 0.3s ease;
+}
+
+/* Collapsed Sidebar */
+.sidebar.collapsed {
+  width: 80px; /* Reduced width */
+  min-width: 80px; /* Minimum width */
+  padding: 12px; /* Reduced padding */
+}
+
+.sidebar-toggle {
+  margin-top: auto; /* Position toggle button at the bottom */
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Logo Styling */
+.logo-container {
+  padding: 0 0 32px 0;
+  width: 100%; /* Ensure logo fills available width */
+}
+
+.sidebar-logo {
+  width: 120px; /* Fill width of container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 33px; /* Limit height */
+  border-radius: 86.4px 0 0 0;
+  opacity: 1;
+  margin-bottom: -10px;
+  margin-left: 20px;
+  color: rgba(0, 74, 76, 1);
+}
+
+/* Sidebar Items */
+.sidebar-items {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Make sidebar items responsive */
+  height: 64px;
+  gap: 20px; /* Space before icons */
+  border-radius: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: rgba(235, 235, 230, 1);
+  color: rgba(0, 0, 0, 1);
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.sidebar-item:hover {
+  background-color: rgba(210, 210, 205, 1); /* Hover effect */
+}
+
+.sidebar-item.selected {
+  background-color: white; /* Selected state */
+  color: rgba(0, 0, 0, 1);
+}
+
+.sidebar-item-icon {
+  width: 24px;
+  height: 24px;
+  color: #083f34;
+}
+
+.icon-right {
+  margin-left: auto;
+  color: inherit; /* Icon color matches text */
+}
+
+/* Main Content Styling */
+.main-content {
+  flex-grow: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.segment {
+  /* Heading */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.first-navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 780px;
+  height: 48px;
+}
+.nav-bar1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 48px;
+  border-radius: 32px;
+}
+.btn-beige {
+  background: #004a4c !important;
+}
+.bg-ratings {
+  border-radius: 15%;
+  background: #ebebe6 !important;
+}
+.navbar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  float: right;
+  height: 40px;
+}
+
+.top-cards,
+.bottom-cards {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap */
+  color: black;
+  font-weight: 14px;
+  font-weight: 400;
+  gap: 20px;
+}
+
+.small-card,
+.medium-card,
+.large-card {
+  background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Flex-grow for responsiveness */
+  min-width: 200px; /* Minimum width for cards */
+  max-width: calc(100% - 16px); /* Prevent overflow from the flexbox */
+  gap: var(--SpacingSpacing-sm12);
+}
+
+.small-card {
+  height: 105px;
+  gap: var(--SpacingSpacing-sm12);
+}
+
+.medium-card {
+  height: 173px;
+  gap: 32px;
+}
+
+.large-card h3 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33.6px;
+  letter-spacing: -4%;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+}
+
+/* Header Section with Profile and Selected Item Text */
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between selected text and profile */
+  width: 100%;
+  background-color: rgba(250, 250, 249, 1);
+  border-radius: 86.4px 0 0 0; /* Rounded top-left corner */
+  margin-bottom: 16px; /* Space below header section */
+}
+
+.selected-item-text {
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+}
+
+.profile-icon {
+  color: rgba(0, 74, 76, 1); /* Match the theme color */
+}
+/* Top Cards Styling */
+.top-cards {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  color: black;
+  font-weight: 400;
+}
+
+.card-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-number {
+  font-size: 24px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align icon to the right */
+  color: var(--text-text-primary-100, rgba(0, 74, 76, 1));
+}
+
+.card-subtext {
+  font-size: 12px;
+  gap: 4px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -2%;
+}
+
+.icon-right {
+  margin-left: 10px;
+  color: green; /* You can change this color based on your design */
+}
+/* Trends general styles remain unchanged */
+
+/* Large Card Header */
+.large-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters-container {
+  display: flex;
+  gap: 12px; /* Space between the filter buttons */
+}
+.filters-container1 {
+  display: flex;
+  gap: 12px; /* Space between the filter buttons */
+}
+
+.months-data {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: flex-end; /* Align bars to the bottom */
+}
+
+.month-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  height: 318px;
+  gap: 9.1px;
+  opacity: 0px;
+}
+
+.graph-bar {
+  width: 32px; /* Adjust as needed */
+  height: 222px; /* Adjust based on your data */
+  background: var(--surface-surface-primary-100, rgba(0, 74, 76, 1));
+  border-radius: 48px;
+  margin-bottom: 4px; /* Space between bars */
+  position: relative;
+}
+.month-label {
+  font-family: Bai Jamjuree;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--text-text-neutral-8, rgba(82, 82, 77, 1));
+}
+
+.month-reading {
+  font-size: 14px; /* Adjust as needed */
+  color: rgba(0, 0, 0, 0.7); /* Text color for reading */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s;
+}
+
+.month-button {
+  width: 26px;
+  height: 53px;
+  padding: 8px 4px;
+  border-radius: 22px 0 0 0;
+  opacity: 0; /* Initially hidden */
+  transform: rotate(-90deg);
+  cursor: pointer;
+  background: var(--surface-surface-neutral-05, rgba(250, 250, 249, 1));
+  border: none;
+}
+.location-title {
+  width: 1091px;
+  height: 78px;
+  padding: var(--SpacingSpacing-none0) var(--SpacingSpacing-lg24)
+    var(--SpacingSpacing-sm12) var(--SpacingSpacing-sm12);
+  gap: 34px;
+  opacity: 0px;
+  display: flex;
+  margin-top: 10px;
+}
+.location-text {
+  font-family: Bai Jamjuree;
+  font-size: 20px;
+  font-weight: 500;
+  height: 28px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+  margin-top: 10px;
+}
+.picker {
+  width: 749px;
+  height: 66px;
+  padding: 10px var(--SpacingSpacing-none0) var(--SpacingSpacing-xs8)
+    var(--SpacingSpacing-none0);
+  gap: 24px;
+  border-radius: var(--RadiusRadius-xl32);
+  opacity: 0px;
+}
+
+.segmented-picker {
+  width: 326px;
+  height: 48px;
+  padding: var(--SpacingSpacing-xs8);
+  gap: var(--SpacingSpacing-xxs4);
+  border-radius: var(--RadiusRadius-xl32);
+  opacity: 0px;
+  background-color: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  border-radius: 48px;
+  display: flex;
+}
+.year-segment {
+  width: 100.67px;
+  height: 32px;
+  padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12)
+    var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12);
+  gap: var(--SpacingSpacing-xs8);
+  border-radius: var(--RadiusRadius-full360);
+  opacity: 0px;
+  background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  margin-top: 8px;
+  margin-left: 10px;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+  border-radius: 48px;
+  font-weight: 600;
+}
+.month-segment {
+  width: 100.67px;
+  height: 32px;
+  padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12)
+    var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12);
+  gap: var(--SpacingSpacing-xs8);
+  border-radius: var(--RadiusRadius-full360);
+  opacity: 0px;
+  background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  margin-top: 8px;
+  margin-left: 10px;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+  border-radius: 48px;
+  font-weight: 600;
+}
+
+.week-segment {
+  width: 100.67px;
+  height: 32px;
+  padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12)
+    var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12);
+  gap: var(--SpacingSpacing-xs8);
+  border-radius: var(--RadiusRadius-full360);
+  opacity: 0px;
+  background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  margin-top: 8px;
+  margin-left: 10px;
+  color: var(--text-text-neutral-05, rgba(250, 250, 249, 1));
+  border-radius: 48px;
+  background: var(--surface-surface-primary-100, rgba(0, 74, 76, 1));
+  font-weight: 600;
+}
+
+.month-button:hover {
+  background-color: rgba(0, 120, 121, 1);
+}
+
+/* Show button when the corresponding month is clicked */
+.month-container.active .month-button {
+  opacity: 1; /* Show the button */
+}
+
+.month-container.active .month-reading {
+  opacity: 1; /* Show the reading */
+}
+
+.filter-button {
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 25, 26, 1); /* Outlined style */
+  border-radius: 360px;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  padding: 4px 12px; /* Padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12) */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between text and icon */
+  cursor: pointer;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+}
+
+.filter-button1 {
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 25, 26, 1); /* Outlined style */
+  border-radius: 360px;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  padding: 4px 12px; /* Padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12) */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between text and icon */
+  cursor: pointer;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+}
+
+.highest,
+.second-highest,
+.lowest {
+  width: 288px;
+  height: 125px;
+  gap: 0px;
+  justify-items: space-between;
+  opacity: 0px;
+  display: flex;
+  margin-top: 35px;
+  margin-left: 10px;
+}
+.highest-data,
+.second-highest-data,
+.lowest-data {
+  width: 132px;
+  height: 76px;
+  gap: var(--SpacingSpacing-none0);
+  opacity: 0px;
+}
+
+.highest-text,
+.second-highest-text,
+.lowest-text {
+  font-family: Bai Jamjuree;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.025em;
+  text-align: left;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+  height: 24px;
+  gap: 0px;
+  opacity: 0px;
+}
+.highest-kg,
+.second-highest-kg,
+.lowest-kg {
+  font-family: Bai Jamjuree;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33.6px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  color: var(--text-text-primary-100, rgba(0, 74, 76, 1));
+}
+.highest-location,
+.second-highest-location,
+.lowest-location {
+  font-family: Bai Jamjuree;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  width: 132px;
+  height: 18px;
+  gap: 0px;
+  opacity: 0px;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+}
+
+.highest-graph,
+.second-highest-graph,
+.lowest-graph {
+  width: 120px;
+  height: 125px;
+  gap: 0px;
+  opacity: 0px;
+}
+.highest-elipse,
+.second-highest-elipse,
+.lowest-elipse {
+  width: 113px;
+  height: 113px;
+  top: 6px;
+  left: 1px;
+  gap: 0px;
+  border-radius: 50%;
+  border: 2px 0px 0px 0px;
+  opacity: 0px;
+  border: 2px solid var(--surface-surface-primary-120, #00191a);
+  margin-top: -15px;
+  margin-left: 50px;
+}
+.highest-percent,
+.second-highest-percent,
+.lowest-percent {
+  width: 56px;
+  height: 37px;
+  top: 44px;
+  left: 30px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: Bai Jamjuree;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+  margin-left: 25px;
+  margin-top: 43px;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .Trends-container {
+    flex-direction: column; /* Stack sidebar and content on smaller screens */
+  }
+
+  .sidebar {
+    width: 100%; /* Sidebar takes full width */
+    height: auto; /* Allow height to adjust */
+    padding: 16px; /* Reduce padding on smaller screens */
+  }
+
+  .sidebar-item {
+    width: auto; /* Full width on small screens */
+  }
+
+  .small-card {
+    min-width: 100%; /* Cards take full width */
+    height: auto; /* Allow height to adjust */
+  }
+
+  .large-card {
+    height: 463px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-logo {
+    width: 80px; /* Smaller logo for mobile */
+  }
+
+  .sidebar-item {
+    font-size: 14px; /* Smaller text for mobile */
+  }
+
+  .top-cards,
+  .bottom-cards {
+    flex-direction: column; /* Stack cards on mobile */
+  }
+
+  .small-card,
+  .large-card {
+    min-width: 100%; /* Full width on mobile */
+  }
+}
