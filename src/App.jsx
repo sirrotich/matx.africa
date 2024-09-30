@@ -1,5 +1,6 @@
-import React from 'react';
-import AppRouter from './routes/Router';
+import React from "react";
+import AppRouter from "./routes/Router";
+import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
   return (
