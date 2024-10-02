@@ -113,7 +113,7 @@
 }
 
 .small-card,
-.medium-card,
+.cylinder-medium-card,
 .large-card {
   background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
   padding: 16px;
@@ -130,8 +130,8 @@
   gap: var(--SpacingSpacing-sm12);
 }
 
-.medium-card {
-  height: 173px;
+.cylinder-medium-card {
+  height: 83px;
   gap: 32px;
 }
 
@@ -410,9 +410,10 @@
   color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
 }
 
-.highest,
-.second-highest,
-.lowest {
+.cylinder-highest,
+.cylinder-second-highest,
+.cylinder-lowest,
+.cylinder-furthest {
   width: 288px;
   height: 125px;
   gap: 0px;
@@ -422,21 +423,23 @@
   margin-top: 35px;
   margin-left: 10px;
 }
-.highest-data,
-.second-highest-data,
-.lowest-data {
+.cylinder-highest-data,
+.cylinder-second-highest-data,
+.cylinder-lowest-data,
+.cylinder-furthest-data {
   width: 132px;
   height: 76px;
   gap: var(--SpacingSpacing-none0);
   opacity: 0px;
 }
 
-.highest-text,
-.second-highest-text,
-.lowest-text {
+.cylinder-highest-text,
+.cylinder-second-highest-text,
+.cylinder-lowest-text,
+.cylinder-furthest-text {
   font-family: Bai Jamjuree;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.025em;
   text-align: left;
@@ -444,75 +447,93 @@
   height: 24px;
   gap: 0px;
   opacity: 0px;
+  width: 123px;
+  margin-top: -40px;
 }
-.highest-kg,
-.second-highest-kg,
-.lowest-kg {
+.cylinder-highest-kg,
+.cylinder-second-highest-kg,
+.cylinder-lowest-kg,
+.cylinder-furthest-kg {
   font-family: Bai Jamjuree;
   font-size: 24px;
   font-weight: 500;
-  line-height: 33.6px;
+  line-height: 18px;
   letter-spacing: -0.04em;
   text-align: left;
   color: var(--text-text-primary-100, rgba(0, 74, 76, 1));
+  margin-top: 10px;
 }
-.highest-location,
-.second-highest-location,
-.lowest-location {
+
+.cylinder-highest-quantity,
+.cylinder-second-highest-quantity,
+.cylinder-lowest-quantity,
+.cylinder-furthest-quantity {
+    font-family: Bai Jamjuree;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: -0.025em;
+    text-align: right;
+    margin-right: -50px;
+    margin-top: -15px;
+  
+}
+.span-cylinder {
   font-family: Bai Jamjuree;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.02em;
   text-align: left;
-  width: 132px;
-  height: 18px;
-  gap: 0px;
-  opacity: 0px;
-  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
+
 }
 
-.highest-graph,
-.second-highest-graph,
-.lowest-graph {
-  width: 120px;
-  height: 125px;
-  gap: 0px;
+.consumption-level {
+  width: 414px;
+  height: 48px;
+  padding: var(--SpacingSpacing-xs8);
+  gap: var(--SpacingSpacing-xxs4);
+  border-radius: var(--RadiusRadius-xl32);
   opacity: 0px;
+  background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  border-radius: 48px;
+  display: flex;
+
 }
-.highest-elipse,
-.second-highest-elipse,
-.lowest-elipse {
-  width: 113px;
-  height: 113px;
-  top: 6px;
-  left: 1px;
-  gap: 0px;
-  border-radius: 50%;
-  border: 2px 0px 0px 0px;
+
+.high-consumption {
+  width: 197px;
+  height: 32px;
+  padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12) var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12);
+  gap: var(--SpacingSpacing-xs8);
+  border-radius: var(--RadiusRadius-full360);
   opacity: 0px;
-  border: 2px solid var(--surface-surface-primary-120, #00191a);
-  margin-top: -15px;
-  margin-left: 50px;
+  border-radius: 48px;
+  background: var(--surface-surface-primary-100, rgba(0, 74, 76, 1));
+  margin-top: 8px;
+margin-left: 8px;
+font-family: Bai Jamjuree;
+font-weight: 600;
+
 }
-.highest-percent,
-.second-highest-percent,
-.lowest-percent {
-  width: 56px;
-  height: 37px;
-  top: 44px;
-  left: 30px;
-  gap: 0px;
+
+
+.low-consumption {
+  width: 197px;
+  height: 32px;
+  padding: var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12) var(--SpacingSpacing-xxs4) var(--SpacingSpacing-sm12);
+  gap: var(--SpacingSpacing-xs8);
+  border-radius: var(--RadiusRadius-full360);
   opacity: 0px;
+  border-radius: 48px;
+  background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+  margin-top: 8px;
+  color: black;
+  size: 14px;
   font-family: Bai Jamjuree;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: -0.025em;
-  text-align: center;
-  color: var(--text-text-neutral-9, rgba(41, 41, 39, 1));
-  margin-left: 25px;
-  margin-top: 43px;
+  font-weight: 600;
+
+
 }
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
