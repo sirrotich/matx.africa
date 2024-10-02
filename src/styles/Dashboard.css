@@ -134,6 +134,7 @@
     min-width: 200px; /* Minimum width for cards */
     max-width: calc(100% - 16px); /* Prevent overflow from the flexbox */
     gap: var(--SpacingSpacing-sm12);
+    margin-bottom: 20px;
 }
 
 .small-card {
