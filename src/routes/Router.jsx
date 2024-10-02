@@ -5,6 +5,8 @@ import VerifyOtp from "../pages/VerifyOtp";
 import Dashboard from "../pages/Dashboard";
 import Trends from "../pages/Trends";
 import Location from "../pages/Location";
+import Error404 from '../components/Error404';
+
 const AppRouter = () => {
   return (
     <Router>
@@ -14,6 +16,7 @@ const AppRouter = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/trends" element={<Trends />} />
         <Route path="/locations" element={<Location />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </Router>
   );
