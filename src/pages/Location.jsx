@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import '../styles/Dashboard.css';
+import '../styles/Location.css';
 import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars, FaUserCircle, FaArrowUp, FaChevronDown } from 'react-icons/fa'; // Updated with FaChevronDown for filter icons
 import logo from '../assets/Vector.png'; // Update the path based on your project structure
 
-const Dashboard = () => {
+const Location = () => {
   const [selectedItem, setSelectedItem] = useState(0); // Default selected item to the first one
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // State for toggling sidebar collapse
 
-  // States for managing filter selections
-  const [filterType, setFilterType] = useState('All Types');
-  const [filterLocation, setFilterLocation] = useState('All Locations');
-  const [filterYear, setFilterYear] = useState('This Year');
+
+  const [filterRegion, setFilterRegion] = useState('All Regions/Towns');
+  const [filterTypes, setFilterTypes] = useState('All Types');
+  const [filterStatus, setFilterStatis] = useState('All Status');
 
   const sidebarItems = [
     { text: 'Overview', icon: <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,6 +51,18 @@ const Dashboard = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
   };
 
+    // Sample data for the table
+  const [locations] = useState([  
+      { id: 1, location: 'ABC Place', region: 'Nairobi', type: 'Full', device: 'JH-Abc', status: 'Online' },  
+      { id: 2, location: 'Adams', region: 'Nairobi', type: 'Full', device: 'JH-Adams', status: 'Online' },  
+      { id: 3, location: 'Aga Khan Dr. Plaza', region: 'Nairobi', type: 'Express', device: 'JH-Agakhan', status: 'Online' },  
+      { id: 4, location: 'Airport View', region: 'Nairobi', type: 'Full', device: 'JH-Airview', status: 'Online' },  
+      { id: 5, location: 'Airsid', region: 'Nairobi', type: 'Full', device: 'JH-Airsid', status: 'Online' },  
+      { id: 6, location: 'Capital', region: 'Nairobi', type: 'Full', device: 'JH-capital', status: 'Offline' },  
+      { id: 7, location: 'Ciata Mall', region: 'Kiambu', type: 'Full', device: 'JH-Ciatamall', status: 'Online' },  
+      { id: 8, location: 'Centre Point', region: 'Diani', type: 'Full', device: 'JH-Centrepoint', status: 'Online' }
+    ]); 
+  
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
@@ -94,253 +106,124 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Top Cards */}
-        <div className="top-cards">
-          <div className="small-card">
-            <div className="card-text">Current Available</div>
-            <div className="card-number">
-              1200 Kg<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M9.75 3.5C9.75 3.08579 9.41421 2.75 9 2.75H5C4.58579 2.75 4.25 3.08579 4.25 3.5V12.5V16.5C4.25 18.0188 5.48122 19.25 7 19.25C8.51878 19.25 9.75 18.0188 9.75 16.5V12.5V3.5ZM5.75 16.5V13.25H8.25V16.5C8.25 17.1904 7.69036 17.75 7 17.75C6.30964 17.75 5.75 17.1904 5.75 16.5ZM5.75 11.75H8.25V4.25H5.75V11.75ZM21.75 21.5C21.75 21.9142 21.4142 22.25 21 22.25H3C2.58579 22.25 2.25 21.9142 2.25 21.5C2.25 21.0858 2.58579 20.75 3 20.75H21C21.4142 20.75 21.75 21.0858 21.75 21.5ZM18.25 11.75V4.25H15.75V11.75H18.25ZM15.75 13.25H18.25V16.5C18.25 17.1904 17.6904 17.75 17 17.75C16.3096 17.75 15.75 17.1904 15.75 16.5V13.25ZM14.25 12.5V3.5C14.25 3.08579 14.5858 2.75 15 2.75H19C19.4142 2.75 19.75 3.08579 19.75 3.5V12.5V16.5C19.75 18.0188 18.5188 19.25 17 19.25C15.4812 19.25 14.25 18.0188 14.25 16.5V12.5Z" fill="#004A4C"/>
-</svg>
+    
+            <div className="location-card">
+            <div className="nav-bar-location">
+                <div className="filters-container">
+                  {/* Filter for Type */}
+                  <button className="filter-button">
+                    {filterRegion} <FaChevronDown />
+                  </button>
+          
+                  {/* Filter for Location */}
+                  <button className="filter-button" >
+                    {filterTypes} <FaChevronDown />
+                  </button>
+          
+                  {/* Filter for Year/Status */}
+                  <button className="filter-button">
+                    {filterStatus} <FaChevronDown />
+                  </button>
+                </div>
+              </div>
 
-            </div>
-            <div className="card-subtext">As at 12:10 PM</div>
-          </div>
-          <div className="small-card">
-            <div className="card-text">Today's Consumption</div>
-            <div className="card-number">
-              230 Kg<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M12.75 2.75C10.1641 2.75 7.68419 3.77723 5.85571 5.60571C4.02723 7.43419 3 9.91414 3 12.5V17.5V21.5C3 21.9142 3.33579 22.25 3.75 22.25H21.75C22.1642 22.25 22.5 21.9142 22.5 21.5V17.5V13.5V12.5C22.5 9.91414 21.4728 7.43419 19.6443 5.60571C17.8158 3.77723 15.3359 2.75 12.75 2.75ZM21 12.5V12.75H14.5V10.25H20.6873C20.893 10.9757 21 11.7323 21 12.5ZM20.0985 8.75H13.75C13.3358 8.75 13 9.08579 13 9.5V12.75H9.75C9.33579 12.75 9 13.0858 9 13.5V16.75H4.5V12.5C4.5 10.312 5.36919 8.21354 6.91637 6.66637C8.46354 5.11919 10.562 4.25 12.75 4.25C14.938 4.25 17.0365 5.11919 18.5836 6.66637C19.2003 7.28307 19.7093 7.98736 20.0985 8.75ZM13.75 14.25H10.5V16.75H21V14.25H13.75ZM4.5 18.25H9.75H21V20.75H4.5V18.25Z" fill="#004A4C"/>
-</svg>
+               
+        {/* Locations Table */}
 
-            </div>
-            <div className="card-subtext">As at 12:10 PM</div>
-          </div>
-          <div className="small-card">
-            <div className="card-text">This Month's Consumption</div>
-            <div className="card-number">
-              5000 Kg<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M16.25 2.5C16.25 2.08579 15.9142 1.75 15.5 1.75C15.0858 1.75 14.75 2.08579 14.75 2.5V3.75H11C10.5858 3.75 10.25 4.08579 10.25 4.5C10.25 4.91421 10.5858 5.25 11 5.25H14.75V6.5C14.75 6.91421 15.0858 7.25 15.5 7.25C15.9142 7.25 16.25 6.91421 16.25 6.5V2.5ZM2.75 10.5V6.5C2.75 4.98122 3.98122 3.75 5.5 3.75H6.75V2.5C6.75 2.08579 7.08579 1.75 7.5 1.75C7.91421 1.75 8.25 2.08579 8.25 2.5V4.5V6.5C8.25 6.91421 7.91421 7.25 7.5 7.25C7.08579 7.25 6.75 6.91421 6.75 6.5V5.25H5.5C4.80964 5.25 4.25 5.80964 4.25 6.5V9.75H20.75V6.5C20.75 5.80964 20.1904 5.25 19.5 5.25H19C18.5858 5.25 18.25 4.91421 18.25 4.5C18.25 4.08579 18.5858 3.75 19 3.75H19.5C21.0188 3.75 22.25 4.98122 22.25 6.5V10.5V19.5C22.25 21.0188 21.0188 22.25 19.5 22.25H5.5C3.98122 22.25 2.75 21.0188 2.75 19.5V10.5ZM4.25 19.5V11.25H20.75V19.5C20.75 20.1904 20.1904 20.75 19.5 20.75H5.5C4.80964 20.75 4.25 20.1904 4.25 19.5Z" fill="#FF6565"/>
-</svg>
+       {/* Locations Table */}
+       <div className="location-content">
 
-            </div>
-            <div className="card-subtext">12 Days</div>
-          </div>
-          <div className="small-card">
-            <div className="card-text">Monthly Average</div>
-            <div className="card-number">
-              3500 Kg<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M6.0313 4.85863C6.40168 4.46633 6.77431 4.27817 7.15946 4.25295C7.33396 4.27225 7.59287 4.39197 7.94312 4.77763C8.32233 5.19518 8.71814 5.82757 9.12829 6.64787C9.94738 8.28604 10.735 10.4877 11.5437 12.7522L11.5557 12.7859L11.5558 12.786C12.3503 15.0109 13.166 17.2948 14.0301 19.0229C14.4637 19.8901 14.9317 20.664 15.4465 21.2308C15.8734 21.7009 16.401 22.1022 17.0295 22.2171C17.0992 22.2385 17.1732 22.25 17.25 22.25C17.2761 22.25 17.3022 22.2497 17.3281 22.249C17.3496 22.2497 17.3712 22.25 17.3929 22.25C17.4432 22.25 17.4923 22.245 17.5398 22.2356C18.3438 22.1551 19.0193 21.7432 19.5594 21.1711C20.1537 20.5416 20.6132 19.692 20.9639 18.7655C21.6664 16.9101 22 14.5657 22 12.5C22 12.0858 21.6642 11.75 21.25 11.75L21.2488 11.75H19.25C18.8358 11.75 18.5 12.0858 18.5 12.5C18.5 12.9142 18.8358 13.25 19.25 13.25H20.4846C20.4142 14.9763 20.1042 16.7999 19.5611 18.2345C19.2493 19.058 18.8775 19.7084 18.4687 20.1414C18.0983 20.5337 17.7257 20.7218 17.3406 20.747C17.1661 20.7277 16.9071 20.608 16.5569 20.2223C16.1777 19.8048 15.7819 19.1724 15.3717 18.3521C14.5526 16.7139 13.7651 14.5122 12.9563 12.2477L12.9443 12.214C12.1497 9.98913 11.334 7.70515 10.4699 5.97705C10.0363 5.10984 9.5683 4.33599 9.05354 3.76918C8.62656 3.29903 8.09901 2.89772 7.47049 2.78292C7.40078 2.76152 7.32675 2.75 7.25003 2.75C7.22387 2.75 7.19783 2.75035 7.17192 2.75103C7.15043 2.75035 7.12883 2.75 7.10713 2.75C7.05684 2.75 7.00771 2.75495 6.9602 2.76439C6.15621 2.84493 5.4807 3.25682 4.94061 3.82887C4.34628 4.45837 3.88683 5.30798 3.53608 6.23446C2.83365 8.08995 2.5 10.4343 2.5 12.5C2.5 12.9142 2.83579 13.25 3.25 13.25L3.25121 13.25H5.25C5.66421 13.25 6 12.9142 6 12.5C6 12.0858 5.66421 11.75 5.25 11.75H4.01544C4.08575 10.0237 4.39582 8.20014 4.93892 6.76554C5.25068 5.94202 5.62249 5.29163 6.0313 4.85863ZM15 12.5C15 12.0858 15.3358 11.75 15.75 11.75H16.75C17.1642 11.75 17.5 12.0858 17.5 12.5C17.5 12.9142 17.1642 13.25 16.75 13.25H15.75C15.3358 13.25 15 12.9142 15 12.5ZM7.75 11.75C7.33579 11.75 7 12.0858 7 12.5C7 12.9142 7.33579 13.25 7.75 13.25H8.75C9.16421 13.25 9.5 12.9142 9.5 12.5C9.5 12.0858 9.16421 11.75 8.75 11.75H7.75Z" fill="#004A4C"/>
-</svg>
-
-            </div>
-            <div className="card-subtext">20 Months</div>
-          </div>
-        </div>
-
-        {/* Large Card with Filters */}
-        <div className="large-card">
-          <div className="large-card-header">
-            <h3>Total Consumption</h3>
-            <div className="filters-container">
-              <button className="filter-button">
-                {filterType} <FaChevronDown />
-              </button>
-              <button className="filter-button">
-                {filterLocation} <FaChevronDown />
-              </button>
-              <button className="filter-button">
-                {filterYear} <FaChevronDown />
-              </button>
-            </div>
-            
-          </div>
-          {/* Total consumption Graph  */}
-
-          <div class="graph-holder">
-    <div class="vertical-bar"></div>
-    <div class="months-data">
-        <div class="month-container">
-        <button class="month-button" id="jan-button" onclick="showReading('jan')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('jan')">
-                <div class="month-reading" id="jan-reading">10</div>
-            </div>
-            <div class="month-label">Jan</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="feb-button" onclick="showReading('feb')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('feb')">
-                <div class="month-reading" id="feb-reading">20</div>
-            </div>
-            <div class="month-label">Feb</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Mar</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Apr</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">May</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">June</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">July</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Aug</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Sept</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Oct</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Nov</div>
-
-        </div>
-        <div class="month-container">
-        <button class="month-button" id="mar-button" onclick="showReading('mar')">Show</button>
-
-            <div class="graph-bar" onclick="toggleMonthReading('mar')">
-                <div class="month-reading" id="mar-reading">15</div>
-            </div>
-                        <div class="month-label">Dec</div>
-
-        </div>
+       <div className="table-header-wrapper">
+    <div className="table-header">
+      <div className="head-location">Location</div>
+      <div className="head-region">Region/Town</div>
+      <div className="head-type">Type</div>
+      <div className="head-device">Device</div>
+      <div className="head-status">Status</div>
+      <div className="head-action">Action</div>
     </div>
+  </div>
+  <table className="locations-table">
+    
+    <tbody>
+      {locations
+        .filter(location =>
+          (filterRegion === 'All Regions/Towns' || location.region === filterRegion) &&
+          (filterTypes === 'All Types' || location.type === filterTypes) &&
+          (filterStatus === 'All Status' || location.status === filterStatus)
+        )
+        .map(location => (
+          <React.Fragment key={location.id}>
+            <tr>
+              <td>{location.location}</td>
+              <td>{location.region}</td>
+              <td>{location.type}</td>
+              <td>{location.device}</td>
+              <td>
+                {/* Apply dynamic class based on status */}
+                <div className={`status-badge ${location.status.toLowerCase()}`}>
+                  {location.status}
+                </div>
+              </td>
+              <td>
+  <div className="action-icons">
+    {/* First Icon */}
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M16.0806 2.46918L21.0303 7.41893C21.3232 7.71182 21.3232 8.1867 21.0303 8.47959L12.5953 16.9146C12.2671 17.2428 11.822 17.4272 11.3579 17.4272L6.82234 17.4272C6.40813 17.4272 6.07234 17.0914 6.07234 16.6772L6.07234 12.1416C6.07234 11.6775 6.25671 11.2324 6.5849 10.9042L15.0199 2.46918C15.3128 2.17629 15.7877 2.17629 16.0806 2.46918ZM17.6716 9.71703L19.4393 7.94926L15.5503 4.06017L13.7825 5.82794L17.6716 9.71703ZM16.6109 10.7777L12.7218 6.8886L7.64556 11.9649C7.59868 12.0118 7.57234 12.0753 7.57234 12.1416L7.57234 15.9272L11.3579 15.9272C11.4242 15.9272 11.4878 15.9008 11.5347 15.854L16.6109 10.7777ZM3.5 20.25C3.08579 20.25 2.75 20.5858 2.75 21C2.75 21.4143 3.08579 21.75 3.5 21.75H21.5C21.9142 21.75 22.25 21.4143 22.25 21C22.25 20.5858 21.9142 20.25 21.5 20.25H3.5Z" fill="#292927"/>
+    </svg>
+
+    {/* Second Icon */}
+   <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.18388 13.3078C7.51855 5.89741 17.4813 5.89741 20.816 13.3078C20.986 13.6855 21.43 13.8539 21.8077 13.6839C22.1854 13.514 22.3539 13.07 22.1839 12.6922C18.3185 4.10259 6.68134 4.10259 2.816 12.6922C2.64602 13.07 2.81444 13.514 3.19217 13.6839C3.5699 13.8539 4.0139 13.6855 4.18388 13.3078ZM14.7499 14C14.7499 12.7574 13.7426 11.75 12.4999 11.75C11.2573 11.75 10.2499 12.7574 10.2499 14C10.2499 15.2426 11.2573 16.25 12.4999 16.25C13.7426 16.25 14.7499 15.2426 14.7499 14ZM12.4999 10.25C14.571 10.25 16.2499 11.9289 16.2499 14C16.2499 16.0711 14.571 17.75 12.4999 17.75C10.4289 17.75 8.74994 16.0711 8.74994 14C8.74994 11.9289 10.4289 10.25 12.4999 10.25Z" fill="#292927"/>
+</svg>
+
+
+    {/* Third Icon */}
+    <svg width="49" height="40" viewBox="0 0 49 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M21.875 12C21.875 11.3096 22.4346 10.75 23.125 10.75H25.875C26.5654 10.75 27.125 11.3096 27.125 12V13.25H21.875V12ZM20.375 12V13.25H15.5C15.0858 13.25 14.75 13.5858 14.75 14C14.75 14.4142 15.0858 14.75 15.5 14.75H33.5C33.9142 14.75 34.25 14.4142 34.25 14C34.25 13.5858 33.9142 13.25 33.5 13.25H28.625V12C28.625 10.4812 27.3938 9.25 25.875 9.25H23.125C21.6062 9.25 20.375 10.4812 20.375 12ZM33.2387 17.13C33.3104 16.722 33.0378 16.3332 32.6299 16.2615C32.2219 16.1897 31.8331 16.4623 31.7613 16.8702L29.7663 28.2165L29.7663 28.2166C29.6613 28.8143 29.1421 29.2501 28.5353 29.2501H20.4647C19.8579 29.2501 19.3387 28.8143 19.2336 28.2165L17.2387 16.8702C17.1669 16.4623 16.7781 16.1897 16.3701 16.2615C15.9622 16.3332 15.6896 16.722 15.7613 17.13L17.7563 28.4763C17.9875 29.7912 19.1297 30.7501 20.4647 30.7501H28.5353C29.8703 30.7501 31.0125 29.7912 31.2437 28.4763L31.2437 28.4763L33.2387 17.13Z" fill="#292927"/>
+    </svg>
+  </div>
+</td>
+
+            </tr>
+            {/* Divider between rows */}
+            <tr className="divider-row">
+              <td colSpan="6">
+                <div className="divider"></div>
+              </td>
+            </tr>
+          </React.Fragment>
+        ))}
+    </tbody>
+  </table>
+  
+
+  <div className="pagination">
+          <div className="per-page-selector">
+              <button className="dropdown-button">
+              10 Per Page<FaChevronDown />
+              </button>
+          </div>
+          <div className="nav-buttons-container">
+              <button className="nav-button">←</button>
+              <button className="nav-button">→</button>
+          </div>
+      </div>
+  
 </div>
 
 
-        </div>
-
-        <div className='location-title'>
-            <div className='location-text'>Location Based Consumption By</div>
-            <div className='picker'>
-                <div className='segmented-picker'>
-                    <button className='year-segment'>
-                        Yearly
-                    </button>
-                    <button className='month-segment'>
-                        Monthly
-                    </button>
-                    <button className='week-segment'>
-                        Weekly
-                    </button>
-                </div>
             </div>
-        </div>
-
-        {/* Bottom Cards */}
-        <div className="bottom-cards">
-          <div className="medium-card">
-            <div className="highest">
-                <div className='highest-data'>
-                <div className='highest-text'>Highest</div>
-                <div className='highest-kg'>325 Kg</div>
-                <div className='highest-location'>UpperHill</div>
-                </div>
-                <div className='highest-graph'>
-                    <div className='highest-elipse'>
-                        <div className='highest-percent'>46%</div>
-                    </div>
-                </div>
-            </div>
-          </div>
 
 
-          <div className="medium-card">
-          <div className="second-highest">
-                <div className='second-highest-data'>
-                <div className='second-highest-text'>Second Highest</div>
-                <div className='second-highest-kg'>283 Kg</div>
-                <div className='second-highest-location'>Kimathi</div>
-                </div>
-                <div className='second-highest-graph'>
-                    <div className='second-highest-elipse'>
-                        <div className='second-highest-percent'>46%</div>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <div className="medium-card">
-          <div className="lowest">
-                <div className='lowest-data'>
-                <div className='lowest-text'>Lowest</div>
-                <div className='lowest-kg'>85 Kg</div>
-                <div className='lowest-location'>Orbit Place</div>
-                </div>
-                <div className='lowest-graph'>
-                    <div className='lowest-elipse'>
-                        <div className='lowest-percent'>12%</div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
+         {/*table starts*/}
+
+         
+
+
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Location;

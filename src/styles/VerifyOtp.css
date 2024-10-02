@@ -153,6 +153,21 @@ body {
     color: #001a33; /* Darker shade on hover */
 }
 
+.send-code-button:hover {
+    background-color: rgba(100, 100, 95, 1);
+}
+
+/* Style for the disabled button */
+.send-code-button.disabled {
+    background-color: rgba(226, 225, 218, 1);
+    color: rgba(82, 82, 77, 1);
+    cursor: not-allowed;
+}
+
+.send-code-button.disabled:hover {
+    background-color: rgba(226, 225, 218, 1); /* Ensure no hover effect when disabled */
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .login-page {

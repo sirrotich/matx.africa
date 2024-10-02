@@ -1,0 +1,287 @@
+.location-card {
+    width: 1055px;
+    height: 696px;
+    padding: var(--SpacingSpacing-lg24);
+    gap: var(--SpacingSpacing-none0);
+    border-radius: var(--RadiusRadius-xl32);
+    opacity: 0px;
+    background: var(--surface-surface-neutral-2, rgba(235, 235, 230, 1));
+    border-radius: 48px;
+}
+
+.nav-bar-location {
+    display: flex;                  /* Enable flexbox layout */
+    justify-content: flex-end;     /* Align items to the right */
+    padding: 10px;                 /* Optional: Padding around the navbar */
+    width: 100%;                   /* Ensure it takes full width */
+  }
+
+  .location-data-header {
+    width: 1007px;
+    height: 40px;
+    padding: var(--SpacingSpacing-lg24) var(--RadiusRadius-lg24) var(--SpacingSpacing-lg24) var(--RadiusRadius-lg24);
+    gap: 16px;
+    opacity: 0px;
+    background-color: white;
+
+  }
+
+  table {  
+    width: 100%;  
+    border-collapse: collapse;  
+    background-color: #EBEBE6;
+  }  
+  
+  th {  
+    background-color: #EBEBE6;
+    padding: 12px;  
+    text-align: left;  
+  }  
+  thead tr:hover {
+    background-color: white; /* Change to white on hover */
+}
+ 
+/* Optional: Change text color on hover */
+thead tr:hover th {
+    color: black; /* Change text color if needed */
+}
+  
+  td {  
+    padding: 10px;  
+    border-bottom: 1px solid #ddd; /* Bottom border for rows */  
+  }  
+  
+  .status-online {  
+    color: white;  
+    background-color: #007bff; /* Blue for online */  
+    padding: 5px 10px;  
+    border-radius: 5px;  
+  }  
+  
+  .status-offline {  
+    color: white;  
+    background-color: #f44336; /* Red for offline */  
+    padding: 5px 10px;  
+    border-radius: 5px;  
+  }  
+  
+  .action-icons button {  
+    background: none;  
+    border: none;  
+    cursor: pointer;  
+    margin: 0 5px;  
+    font-size: 16px; /* Icon size */  
+  }  
+  
+  .pagination {
+    display: flex;                     /* Enable flexbox layout */
+    justify-content: flex-end;        /* Align items to the right */
+    align-items: center;              /* Center items vertically */
+    padding: 10px;                   /* Padding around the pagination */
+    border-radius: 48px;              /* Rounded corners */
+    width: 100%;                     /* Adjust as necessary */
+}
+ 
+.per-page-selector {
+    margin-right: 10px;               /* Space between dropdown and navigation buttons */
+}
+
+
+  
+.location-content {
+    width: 1007px;
+    height: 648px;
+    gap: var(--SpacingSpacing-none0);
+    opacity: 0px;
+
+    margin-left: 20px;
+}
+  /* Style the entire table */
+/* General table styling */
+.locations-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: Bai Jamjuree;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.025em;
+    text-align: left;
+
+  }
+  
+  .table-header-wrapper {
+    background-color: white;
+    border-radius: 48px;
+    width: 1007px; /* Same width as the table */
+    margin-bottom: 16px; /* Space between header and table */
+  }
+  
+  /* Styling for the header inside the wrapper */
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Ensure it takes full width */
+    padding: 10px 16px;
+    gap: 16px;
+  }
+  
+  /* Individual header column styling */
+  .table-header > div {
+    flex: 1; /* Equal spacing for all headers */
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  
+  /* Row Styling */
+  .locations-table th,
+  .locations-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: none;
+  }
+  
+  /* Divider Row Styling */
+  .divider-row td {
+    padding: 0;
+  }
+  
+  .divider {
+    width: 1007px;
+    height: 1px;
+    margin: 0 16px;
+    background-color: #ddd;
+    opacity: 1;
+  }
+  
+  /* Status Badge Styling */
+  .status-badge {
+    width: 52px;
+    height: 26px;
+    padding: 4px 8px;
+    border-radius: 100px 0px 0px 0px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    border-radius: 48px;
+  }
+  
+  /* Online Status Styling */
+  .status-badge.online {
+    background-color: rgba(83, 213, 255, 1); /* Blue color for online */
+  }
+  
+  /* Offline Status Styling */
+  .status-badge.offline {
+    background-color: rgba(255, 101, 101, 1); /* Red color for offline */
+  }
+  
+
+  /* Styling for action icons */
+.action-icons {
+    display: flex;
+    gap: 8px; /* Space between the icons */
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center; /* Vertically align icons */
+  }
+  
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 10px;
+    color: black;
+    border-top: 1px solid var(--surface-surface-primary-120, rgba(0, 25, 26, 1));
+    border: none;
+    cursor: pointer;
+    border-color: #004a4c;
+  }
+  
+  .pagination button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+  }
+  
+  .page-navigation {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .page-navigation button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .page-navigation .active {
+    color: #004a4c;
+    color: white;
+  }
+  
+  .pagination {
+    display: flex;                     /* Enable flexbox layout */
+    justify-content: flex-end;        /* Align items to the right */
+    align-items: center;              /* Center items vertically */
+    padding: 10px;                   /* Padding around the pagination */
+    border-radius: 48px;              /* Rounded corners */
+    width: 100%;                     /* Adjust as necessary */
+}
+ 
+.per-page-selector {
+    margin-right: 10px;  
+    border-radius: 48px;             /* Full border radius */
+    border: 1px solid #004a4c;      
+              /* Space between dropdown and navigation buttons */
+}
+ 
+.dropdown-button {
+    background-color: #EBEBE6;        /* Existing background color */
+    border: 1px solid #ccc;           /* Existing border */
+    border-radius: 48px;              /* Existing border radius */
+    padding: 8px;                     /* Existing padding */
+    font-family: 'Bai Jamjuree', sans-serif; /* Existing font */
+    font-size: 14px;                  /* Existing font size */
+    font-weight: 400;                 /* Semi Bold */
+    display: flex;                    /* Flexbox for icon alignment */
+    align-items: center;              /* Center icon vertically */
+    gap: 5px;                         /* Space between text and icon */
+    cursor: pointer;                  /* Pointer cursor on hover */
+}
+ 
+/* Navigation buttons (← and →) */
+.nav-buttons-container {
+    display: flex;                    /* Keep nav buttons in a row */
+    align-items: center;              /* Center items vertically */
+    background-color: #EBEBE6;       /* Background color for nav buttons */
+    width: 92px;                     /* Fixed width for navigation buttons */
+    height: 40px;                    /* Fixed height for navigation buttons */
+    padding: 8px 16px;               /* Padding for nav buttons */
+    gap: 12px;                       /* Space between nav buttons */
+    border-radius: 48px;             /* Full border radius */
+    border: 1px solid #004a4c;          /* Border for nav buttons */
+    opacity: 1;                      /* Make visible */
+}
+ 
+.nav-button {
+    background-color: transparent;    /* No background color */
+    width: 24px;                     /* Width of nav buttons */
+    height: 24px;                    /* Height of nav buttons */
+    padding: 7.25px 2.75px 7.25px 3.25px; /* Padding for nav buttons */
+    display: flex;                   /* Flexbox for center alignment */
+    justify-content: center;         /* Center icon vertically */
+    align-items: center;             /* Center icon horizontally */
+    font-size: 22px;                 /* Font size for nav buttons */
+    cursor: pointer;                 /* Pointer cursor on hover */
+}
+ 
+.nav-button:hover {
+    background-color: #e0e0e0;       /* Hover effect for nav buttons */
+}
