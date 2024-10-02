@@ -55,6 +55,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
+      <div className="sidebar-wrapper">
       <div className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="logo-container">
           {!isSidebarCollapsed && <svg width="289" height="73" viewBox="0 0 289 73" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,11 +80,11 @@ const Dashboard = () => {
          </Link>
           ))}
         </div>
-        <div className="sidebar-toggle" onClick={toggleSidebar}>
+        {/* <div className="sidebar-toggle" onClick={toggleSidebar}>
           <FaBars />
-        </div>
+        </div> */}
       </div>
-
+</div>
       {/* Main Content */}
       <div className="main-content">
         {/* Selected Sidebar Text and Profile */}

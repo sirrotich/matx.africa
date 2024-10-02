@@ -1,4 +1,4 @@
-.Trends-container {
+.trends-container {
   display: flex;
   flex-direction: row; /* Row for larger screens */
   width: 100vw; /* Full width */
@@ -8,18 +8,29 @@
   overflow:auto;
 }
 
-/* Sidebar Styling */
-.sidebar {
-  width: 337px; /* Fixed width for larger screens */
-  min-width: 240px; /* Minimum width */
-  height: 100vh; /* Full height */
-  background-color: rgba(235, 235, 230, 1);
-  padding: 24px;
+.sidebar-trends {
+  width: 100%; /* Sidebar takes full width of the wrapper */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align items at the top */
-  overflow-y: auto; /* Scrollable sidebar */
-  transition: width 0.3s ease;
+  justify-content: flex-start;
+  padding: 24px;
+}
+
+.main-content {
+  margin-left: 337px; /* Push the main content to the right of the sidebar */
+  padding: 24px; /* Optional padding for main content */
+  background-color: #f5f5f5; /* Background for main content */
+  z-index: 1; /* Lower z-index than the sidebar */
+}
+.sidebar-wrapper {
+  position: fixed; /* Fix the sidebar wrapper to stay in place */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full height of the viewport */
+  width: 337px; /* Width of the sidebar */
+  background-color: rgba(235, 235, 230, 1); /* Background color for the wrapper */
+  overflow-y: auto; /* Enable vertical scrolling if the content overflows */
+  z-index: 1000; /* Ensures the sidebar stays on top */
 }
 
 /* Collapsed Sidebar */
@@ -57,14 +68,7 @@
   color: inherit; /* Icon color matches text */
 }
 
-/* Main Content Styling */
-.main-content {
-  flex-grow: 1;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+
 .segment {
   /* Heading */
   display: flex;

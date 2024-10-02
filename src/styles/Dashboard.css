@@ -10,18 +10,35 @@
 }
 
 /* Sidebar Styling */
-.sidebar {
+.sidebar-dashboard {
     width: 337px; /* Fixed width for larger screens */
     min-width: 240px; /* Minimum width */
     height: 100vh; /* Full height */
-    background-color: rgba(235, 235, 230, 1);
+    /* background-color: rgba(235, 235, 230, 1); */
     padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Align items at the top */
     overflow-y: auto; /* Scrollable sidebar */
     transition: width 0.3s ease;
+   
+
 }
+
+.sidebar {
+    width: 100%; /* Sidebar takes full width of the wrapper */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 24px;
+  }
+  
+  .main-content {
+    margin-left: 337px; /* Push the main content to the right of the sidebar */
+    padding: 24px; /* Optional padding for main content */
+    background-color: #f5f5f5; /* Background for main content */
+    z-index: 1; /* Lower z-index than the sidebar */
+  }
 
 /* Collapsed Sidebar */
 .sidebar.collapsed {
@@ -49,7 +66,7 @@
     max-height: 33px; /* Limit height */
     border-radius: 86.4px 0 0 0;
     opacity: 1;
-    margin-left: 20px;
+    margin-left: 25px;
     color: rgba(0, 74, 76, 1);
 }
 
@@ -98,14 +115,6 @@
     color: inherit; /* Icon color matches text */
 }
 
-/* Main Content Styling */
-.main-content {
-    flex-grow: 1;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
 
 .top-cards, .bottom-cards {
     display: flex;
