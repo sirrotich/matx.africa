@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
-import '../styles/Location.css';
-import { FaChartArea, FaHeartbeat, FaBrain, FaMapMarkerAlt, FaBell, FaCog, FaSignOutAlt, FaBars, FaUserCircle, FaArrowUp, FaChevronDown } from 'react-icons/fa'; // Updated with FaChevronDown for filter icons
-import logo from '../assets/Vector.png'; // Update the path based on your project structure
+import React, { useState } from "react";
+import "../styles/Settings.css";
 import { Link } from 'react-router-dom'; // Import Link for navigation
 
-const Location = () => {
+import {
+  FaChartArea,
+  FaHeartbeat,
+  FaBrain,
+  FaMapMarkerAlt,
+  FaBell,
+  FaCog,
+  FaSignOutAlt,
+  FaBars,
+  FaUserCircle,
+  FaArrowUp,
+  FaChevronDown,
+} from "react-icons/fa"; // Updated with FaChevronDown for filter icons
+import logo from "../assets/Vector.png"; // Update the path based on your project structure
+
+const Settings = () => {
   const [selectedItem, setSelectedItem] = useState(0); // Default selected item to the first one
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // State for toggling sidebar collapse
+  const [activeTab, setActiveTab] = useState('myDetails');
 
-
-  const [filterRegion, setFilterRegion] = useState('All Regions/Towns');
-  const [filterTypes, setFilterTypes] = useState('All Types');
-  const [filterStatus, setFilterStatis] = useState('All Status');
+  // States for managing filter selections
+  const [filterType, setFilterType] = useState("All Types");
+  const [filterLocation, setFilterLocation] = useState("All Locations");
+  const [filterYear, setFilterYear] = useState("All Days");
 
   const sidebarItems = [
     { text: 'Overview', icon: <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,14 +47,13 @@ const Location = () => {
        },
     { text: 'Settings', icon: <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M10.981 9.25C10.6403 9.25 10.3424 9.47964 10.2557 9.80912L9.7177 11.8534L7.84921 12.641L6.49844 11.4396C6.20166 11.1756 5.75053 11.1888 5.46967 11.4697L3.46967 13.4697C3.19791 13.7414 3.17556 14.1746 3.4179 14.4729L4.59144 15.9174L3.82402 17.8042L1.82955 18.2696C1.49012 18.3488 1.25 18.6515 1.25 19V21C1.25 21.3381 1.47627 21.6345 1.80248 21.7235L3.8517 22.283L4.64057 24.1544L3.44016 25.5009C3.17563 25.7976 3.18858 26.2492 3.46967 26.5303L5.46967 28.5303C5.74173 28.8024 6.17554 28.8245 6.4738 28.5814L7.9188 27.4038L9.76234 28.1622L10.2728 30.1836C10.3569 30.5167 10.6565 30.75 11 30.75H13C13.3433 30.75 13.6428 30.5169 13.727 30.1841L14.2392 28.1621L16.1369 27.3762C16.3307 27.5361 16.5687 27.7399 16.8008 27.9419C16.989 28.1057 17.1639 28.2601 17.2918 28.3735C17.3557 28.4302 17.4077 28.4766 17.4437 28.5087L17.4993 28.5584C17.7958 28.8243 18.2486 28.812 18.5303 28.5303L20.5303 26.5303C20.8063 26.2543 20.8245 25.8127 20.5721 25.515L19.3839 24.1135L20.164 22.2299L22.1887 21.703C22.5192 21.617 22.7499 21.3187 22.7499 20.9772L22.75 19C22.75 18.657 22.5173 18.3577 22.1848 18.2731L20.1715 17.7612L19.3925 15.8801L20.5727 14.4842C20.8245 14.1865 20.8061 13.7454 20.5303 13.4697L18.5303 11.4697C18.2535 11.1929 17.8104 11.1755 17.5127 11.4298L16.126 12.615L14.1883 11.8181L13.6607 9.80947C13.5741 9.47982 13.2762 9.25 12.9353 9.25H10.981ZM11.0744 12.592L11.5591 10.75H12.3569L12.8324 12.5603C12.8921 12.7877 13.055 12.9739 13.2725 13.0634L15.9795 14.1766C16.2397 14.2836 16.538 14.2359 16.752 14.0531L17.96 13.0207L18.9819 14.0425L17.952 15.2605C17.7708 15.4749 17.7244 15.7724 17.8318 16.0317L18.9294 18.6823C19.0199 18.9009 19.2083 19.064 19.4375 19.1223L21.25 19.5831L21.2499 20.3974L19.425 20.8722C19.1975 20.9314 19.0109 21.0939 18.9209 21.3111L17.823 23.9625C17.7155 24.2221 17.7621 24.5201 17.9438 24.7344L18.9812 25.9581L17.9688 26.9705C17.9101 26.919 17.8486 26.8653 17.7856 26.8105C17.4134 26.4865 16.9476 26.0886 16.6913 25.9054C16.4807 25.7549 16.2073 25.7236 15.9682 25.8226L13.3176 26.9203C13.0988 27.0109 12.9356 27.1995 12.8775 27.429L12.4163 29.25H11.5841L11.1242 27.4287C11.066 27.1983 10.9021 27.0091 10.6824 26.9187L8.07651 25.8467C7.82203 25.742 7.53067 25.7851 7.31736 25.9589L6.05132 26.9907L5.03111 25.9704L6.07559 24.7988C6.2682 24.5828 6.31929 24.2751 6.20686 24.0084L5.09222 21.3642C5.00277 21.152 4.82079 20.9926 4.59864 20.932L2.75 20.4273V19.5951L4.54295 19.1767C4.78003 19.1214 4.97551 18.9544 5.06724 18.7289L6.1481 16.0714C6.25121 15.8179 6.20804 15.5283 6.03546 15.3159L5.00862 14.052L6.03013 13.0305L7.20597 14.0764C7.42202 14.2685 7.7293 14.3194 7.99574 14.2071L10.6404 13.0922C10.8548 13.0018 11.0152 12.817 11.0744 12.592ZM9.75 20C9.75 18.7574 10.7574 17.75 12 17.75C13.2426 17.75 14.25 18.7574 14.25 20C14.25 21.2426 13.2426 22.25 12 22.25C10.7574 22.25 9.75 21.2426 9.75 20ZM12 16.25C9.92893 16.25 8.25 17.9289 8.25 20C8.25 22.0711 9.92893 23.75 12 23.75C14.0711 23.75 15.75 22.0711 15.75 20C15.75 17.9289 14.0711 16.25 12 16.25Z" fill="#004A4C"/>
-      </svg>, path: '/settings' 
+      </svg> , path: '/settings' 
        },
     { text: 'Logout', icon: <svg width="24" height="40" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 13C5.75 12.3096 6.30964 11.75 7 11.75H17C17.6904 11.75 18.25 12.3096 18.25 13V14C18.25 14.4142 18.5858 14.75 19 14.75C19.4142 14.75 19.75 14.4142 19.75 14V13C19.75 11.4812 18.5188 10.25 17 10.25H7C5.48122 10.25 4.25 11.4812 4.25 13V27C4.25 28.5188 5.48122 29.75 7 29.75H17C18.5188 29.75 19.75 28.5188 19.75 27V26C19.75 25.5858 19.4142 25.25 19 25.25C18.5858 25.25 18.25 25.5858 18.25 26V27C18.25 27.6904 17.6904 28.25 17 28.25H7C6.30964 28.25 5.75 27.6904 5.75 27V13ZM16.5303 23.5303L19.5303 20.5303C19.8232 20.2374 19.8232 19.7626 19.5303 19.4697L16.5303 16.4697C16.2374 16.1768 15.7626 16.1768 15.4697 16.4697C15.1768 16.7626 15.1768 17.2374 15.4697 17.5303L17.1893 19.25H12C11.5858 19.25 11.25 19.5858 11.25 20C11.25 20.4142 11.5858 20.75 12 20.75H17.1893L15.4697 22.4697C15.1768 22.7626 15.1768 23.2374 15.4697 23.5303C15.7626 23.8232 16.2374 23.8232 16.5303 23.5303Z" fill="#004A4C"/>
       </svg>
        },
   ];
-
   const handleItemClick = (index) => {
     setSelectedItem(index);
   };
@@ -49,24 +62,21 @@ const Location = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
   };
 
-    // Sample data for the table
-  const [locations] = useState([  
-      { id: 1, location: 'ABC Place', region: 'Nairobi', type: 'Full', device: 'JH-Abc', status: 'Online' },  
-      { id: 2, location: 'Adams', region: 'Nairobi', type: 'Full', device: 'JH-Adams', status: 'Online' },  
-      { id: 3, location: 'Aga Khan Dr. Plaza', region: 'Nairobi', type: 'Express', device: 'JH-Agakhan', status: 'Online' },  
-      { id: 4, location: 'Airport View', region: 'Nairobi', type: 'Full', device: 'JH-Airview', status: 'Online' },  
-      { id: 5, location: 'Airsid', region: 'Nairobi', type: 'Full', device: 'JH-Airsid', status: 'Online' },  
-      { id: 6, location: 'Capital', region: 'Nairobi', type: 'Full', device: 'JH-capital', status: 'Offline' },  
-      { id: 7, location: 'Ciata Mall', region: 'Kiambu', type: 'Full', device: 'JH-Ciatamall', status: 'Online' },  
-      { id: 8, location: 'Centre Point', region: 'Diani', type: 'Full', device: 'JH-Centrepoint', status: 'Online' }
-    ]); 
-  
+  const [users] = useState([  
+    { id: 1, name: 'Papa Kirui', email: 'papa.kirui@java.co.ke', role: 'OrbitManager'},  
+    { id: 2, name: 'Pat Katama', email: 'pat.katama@java.co.ke', role: 'Lavinton Manager '},  
+    { id: 3, name: 'Jane Wakesho', email: 'jane.wakesho@java.co.ke', role: 'Gigiri Manager' },  
+    { id: 4, name: 'Norman Nganga', email: 'norman.nganga@java.co.ke', role: 'Oversight Manager'}
+  ]); 
+
+
+
   return (
-    <div className="dashboard-container">
+    <div className="settings-container">
       {/* Sidebar */}
       <div className="sidebar-wrapper">
-      <div className={`sidebar ${isSidebarCollapsed ? 'collapsed' : ''}`}>
-        <div className="logo-container">
+      <div className={`sidebar ${isSidebarCollapsed ? "collapsed" : ""}`}>
+      <div className="logo-container">
           {!isSidebarCollapsed && <svg width="289" height="73" viewBox="0 0 289 73" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M40.8229 16.732V0H28.0363L20.4129 14.996L12.7866 0H0V16.732H5.41261V5.46606H9.48258L17.3702 20.978L9.96918 35.5309H5.61085L5.41261 23.4819L0 23.576L0.28835 41H13.2732L20.4129 26.96L27.5527 41H40.5345L40.8229 23.576L35.4103 23.4819L35.212 35.5309H30.8537L23.4527 20.978L31.3403 5.46606H35.4103V16.732H40.8229Z" fill="#004A4C"/>
 <path d="M125.424 6.74075L134.462 20.0705L125.04 33.9466H130.116L137.039 23.7641L143.924 33.9466H149L139.577 20.0705L148.616 6.74075H143.578L137.039 16.3405L130.5 6.74075H125.424Z" fill="#004A4C"/>
@@ -78,113 +88,148 @@ const Location = () => {
         </div>
         <div className="sidebar-items">
           {sidebarItems.map((item, index) => (
-           <Link 
-           to={item.path} // Use Link for navigation
-           className={`sidebar-item ${selectedItem === index ? 'selected' : ''}`} 
-           key={index} 
-           onClick={() => handleItemClick(index)}
-         >
-           <div className="sidebar-item-icon">{item.icon}</div>
-           {!isSidebarCollapsed && <span className="sidebar-item-text">{item.text}</span>}
-         </Link>
+            <Link 
+            to={item.path} // Use Link for navigation
+            className={`sidebar-item ${selectedItem === index ? 'selected' : ''}`} 
+            key={index} 
+            onClick={() => handleItemClick(index)}
+          >
+            <div className="sidebar-item-icon">{item.icon}</div>
+            {!isSidebarCollapsed && <span className="sidebar-item-text">{item.text}</span>}
+          </Link>
           ))}
         </div>
         {/* <div className="sidebar-toggle" onClick={toggleSidebar}>
           <FaBars />
         </div> */}
       </div>
-      </div>
 
+</div>
       {/* Main Content */}
-      <div className="main-content">
-        {/* Selected Sidebar Text and Profile */}
-        <div className="header-section">
-          <div className="selected-item-text">
-            {sidebarItems[selectedItem].text}
-          </div>
-          <div className="profile-icon">
-            <FaUserCircle size={48} />
-          </div>
+        <div className="main-content">
+      {/* Selected Sidebar Text and Profile */}
+      <div className="header-section">
+        <div className="selected-item-text">
+        {sidebarItems[selectedItem].text}
+
         </div>
 
-    
-            <div className="location-card">
-            <div className="nav-bar-location">
-                <div className="filters-container">
-                  {/* Filter for Type */}
-                  <button className="filter-button">
-                    {filterRegion} <FaChevronDown />
-                  </button>
-          
-                  {/* Filter for Location */}
-                  <button className="filter-button" >
-                    {filterTypes} <FaChevronDown />
-                  </button>
-          
-                  {/* Filter for Year/Status */}
-                  <button className="filter-button">
-                    {filterStatus} <FaChevronDown />
-                  </button>
-                </div>
-              </div>
-
-               
-        {/* Locations Table */}
-
-       {/* Locations Table */}
-       <div className="location-content">
-
-       <div className="table-header-wrapper">
-    <div className="table-header">
-      <div className="head-location">Location</div>
-      <div className="head-region">Region/Town</div>
-      <div className="head-type">Type</div>
-      <div className="head-device">Device</div>
-      <div className="head-status">Status</div>
-      <div className="head-action">Action</div>
-    </div>
+        <div className="profile-icon">
+          <FaUserCircle size={48} />
+        </div>
+      </div>
+      <div className="col-12 segment">
+        <div className="nav-bar1 col-6">
+        <div className="details-tab">
+  <div>
+    <button
+      className={`my-details-tab ${activeTab === 'myDetails' ? 'active-tab' : ''}`}
+      onClick={() => setActiveTab('myDetails')}
+    >
+      My Details
+    </button>
   </div>
-  <table className="locations-table">
+  <div>
+    <button
+      className={`users-tab ${activeTab === 'users' ? 'active-tab' : ''}`}
+      onClick={() => setActiveTab('users')}
+    >
+      Users
+    </button>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+      {/* Conditional rendering based on activeTab */}
+      {activeTab === 'myDetails' && (
+        <div className="settings-info">
+          <div className="my-details-card">
+            <div className="name">
+              <div className="name-holder">Name</div>
+              <div className="user-name">James Kamau</div>
+              <button className="edit-name-btn">Edit</button>
+            </div>
+
+            <div className="divider"></div>
+
+            <div className="email">
+              <div className="email-holder">Email</div>
+              <div className="user-email">james.kamau@java.co.ke</div>
+              <button className="edit-email-btn">Edit</button>
+            </div>
+
+            <div className="divider"></div>
+
+            <div className="address">
+              <div className="company-details">Company Details</div>
+              <div className="address-name">
+                Name : <span className="address-span">Nairobi Java House Limited</span>
+              </div>
+              <div className="address-info">
+                Address : <span className="address-span">ABC Place, Waiyaki Way, Nairobi, Kenya</span>
+              </div>
+              <div className="address-telephone">
+                Telephone : <span className="address-span">+254709283000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'users' && (
+        <div className="settings-info">
+          <div className="users-list-card">
+                    <div className="users-list-data">
+                <div className="users-list-nav">
+                    <button className="filter-button">
+                            All Users<FaChevronDown />
+                    </button>
+
+                    <div className="search-area">
+                            <input type="text" placeholder="Search" className="search-input" />
+                            <button className="add-users-button">Add User +</button>
+                    </div>
+                </div>
+
+
+                <div className="users-table-header-wrapper">
+                    <div className="users-table-header">
+                        <div className="head-name">Name</div>
+                        <div className="head-email">Email</div>
+                        <div className="head-role">Role</div>
+                        <div className="head-action">Action</div>
+                    
+                        </div>
+            </div>
+
+
+            <table className="users-table">
     
     <tbody>
-      {locations
-        .filter(location =>
-          (filterRegion === 'All Regions/Towns' || location.region === filterRegion) &&
-          (filterTypes === 'All Types' || location.type === filterTypes) &&
-          (filterStatus === 'All Status' || location.status === filterStatus)
-        )
-        .map(location => (
-          <React.Fragment key={location.id}>
+      {users
+        .map(user => (
+          <React.Fragment key={user.id}>
             <tr>
-              <td>{location.location}</td>
-              <td>{location.region}</td>
-              <td>{location.type}</td>
-              <td>{location.device}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td></td>
+              <td>{user.role}</td>
+
               <td>
-                {/* Apply dynamic class based on status */}
-                <div className={`status-badge ${location.status.toLowerCase()}`}>
-                  {location.status}
+                <div className="action-icons">
+                    {/* First Icon */}
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M16.0806 2.46918L21.0303 7.41893C21.3232 7.71182 21.3232 8.1867 21.0303 8.47959L12.5953 16.9146C12.2671 17.2428 11.822 17.4272 11.3579 17.4272L6.82234 17.4272C6.40813 17.4272 6.07234 17.0914 6.07234 16.6772L6.07234 12.1416C6.07234 11.6775 6.25671 11.2324 6.5849 10.9042L15.0199 2.46918C15.3128 2.17629 15.7877 2.17629 16.0806 2.46918ZM17.6716 9.71703L19.4393 7.94926L15.5503 4.06017L13.7825 5.82794L17.6716 9.71703ZM16.6109 10.7777L12.7218 6.8886L7.64556 11.9649C7.59868 12.0118 7.57234 12.0753 7.57234 12.1416L7.57234 15.9272L11.3579 15.9272C11.4242 15.9272 11.4878 15.9008 11.5347 15.854L16.6109 10.7777ZM3.5 20.25C3.08579 20.25 2.75 20.5858 2.75 21C2.75 21.4143 3.08579 21.75 3.5 21.75H21.5C21.9142 21.75 22.25 21.4143 22.25 21C22.25 20.5858 21.9142 20.25 21.5 20.25H3.5Z" fill="#292927"/>
+                    </svg>
+
+                    {/* Third Icon */}
+                    <svg width="49" height="40" viewBox="0 0 49 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M21.875 12C21.875 11.3096 22.4346 10.75 23.125 10.75H25.875C26.5654 10.75 27.125 11.3096 27.125 12V13.25H21.875V12ZM20.375 12V13.25H15.5C15.0858 13.25 14.75 13.5858 14.75 14C14.75 14.4142 15.0858 14.75 15.5 14.75H33.5C33.9142 14.75 34.25 14.4142 34.25 14C34.25 13.5858 33.9142 13.25 33.5 13.25H28.625V12C28.625 10.4812 27.3938 9.25 25.875 9.25H23.125C21.6062 9.25 20.375 10.4812 20.375 12ZM33.2387 17.13C33.3104 16.722 33.0378 16.3332 32.6299 16.2615C32.2219 16.1897 31.8331 16.4623 31.7613 16.8702L29.7663 28.2165L29.7663 28.2166C29.6613 28.8143 29.1421 29.2501 28.5353 29.2501H20.4647C19.8579 29.2501 19.3387 28.8143 19.2336 28.2165L17.2387 16.8702C17.1669 16.4623 16.7781 16.1897 16.3701 16.2615C15.9622 16.3332 15.6896 16.722 15.7613 17.13L17.7563 28.4763C17.9875 29.7912 19.1297 30.7501 20.4647 30.7501H28.5353C29.8703 30.7501 31.0125 29.7912 31.2437 28.4763L31.2437 28.4763L33.2387 17.13Z" fill="#292927"/>
+                    </svg>
                 </div>
-              </td>
-              <td>
-  <div className="action-icons">
-    {/* First Icon */}
-    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fillRule="evenodd" clipRule="evenodd" d="M16.0806 2.46918L21.0303 7.41893C21.3232 7.71182 21.3232 8.1867 21.0303 8.47959L12.5953 16.9146C12.2671 17.2428 11.822 17.4272 11.3579 17.4272L6.82234 17.4272C6.40813 17.4272 6.07234 17.0914 6.07234 16.6772L6.07234 12.1416C6.07234 11.6775 6.25671 11.2324 6.5849 10.9042L15.0199 2.46918C15.3128 2.17629 15.7877 2.17629 16.0806 2.46918ZM17.6716 9.71703L19.4393 7.94926L15.5503 4.06017L13.7825 5.82794L17.6716 9.71703ZM16.6109 10.7777L12.7218 6.8886L7.64556 11.9649C7.59868 12.0118 7.57234 12.0753 7.57234 12.1416L7.57234 15.9272L11.3579 15.9272C11.4242 15.9272 11.4878 15.9008 11.5347 15.854L16.6109 10.7777ZM3.5 20.25C3.08579 20.25 2.75 20.5858 2.75 21C2.75 21.4143 3.08579 21.75 3.5 21.75H21.5C21.9142 21.75 22.25 21.4143 22.25 21C22.25 20.5858 21.9142 20.25 21.5 20.25H3.5Z" fill="#292927"/>
-    </svg>
-
-    {/* Second Icon */}
-   <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M4.18388 13.3078C7.51855 5.89741 17.4813 5.89741 20.816 13.3078C20.986 13.6855 21.43 13.8539 21.8077 13.6839C22.1854 13.514 22.3539 13.07 22.1839 12.6922C18.3185 4.10259 6.68134 4.10259 2.816 12.6922C2.64602 13.07 2.81444 13.514 3.19217 13.6839C3.5699 13.8539 4.0139 13.6855 4.18388 13.3078ZM14.7499 14C14.7499 12.7574 13.7426 11.75 12.4999 11.75C11.2573 11.75 10.2499 12.7574 10.2499 14C10.2499 15.2426 11.2573 16.25 12.4999 16.25C13.7426 16.25 14.7499 15.2426 14.7499 14ZM12.4999 10.25C14.571 10.25 16.2499 11.9289 16.2499 14C16.2499 16.0711 14.571 17.75 12.4999 17.75C10.4289 17.75 8.74994 16.0711 8.74994 14C8.74994 11.9289 10.4289 10.25 12.4999 10.25Z" fill="#292927"/>
-</svg>
-
-
-    {/* Third Icon */}
-    <svg width="49" height="40" viewBox="0 0 49 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fillRule="evenodd" clipRule="evenodd" d="M21.875 12C21.875 11.3096 22.4346 10.75 23.125 10.75H25.875C26.5654 10.75 27.125 11.3096 27.125 12V13.25H21.875V12ZM20.375 12V13.25H15.5C15.0858 13.25 14.75 13.5858 14.75 14C14.75 14.4142 15.0858 14.75 15.5 14.75H33.5C33.9142 14.75 34.25 14.4142 34.25 14C34.25 13.5858 33.9142 13.25 33.5 13.25H28.625V12C28.625 10.4812 27.3938 9.25 25.875 9.25H23.125C21.6062 9.25 20.375 10.4812 20.375 12ZM33.2387 17.13C33.3104 16.722 33.0378 16.3332 32.6299 16.2615C32.2219 16.1897 31.8331 16.4623 31.7613 16.8702L29.7663 28.2165L29.7663 28.2166C29.6613 28.8143 29.1421 29.2501 28.5353 29.2501H20.4647C19.8579 29.2501 19.3387 28.8143 19.2336 28.2165L17.2387 16.8702C17.1669 16.4623 16.7781 16.1897 16.3701 16.2615C15.9622 16.3332 15.6896 16.722 15.7613 17.13L17.7563 28.4763C17.9875 29.7912 19.1297 30.7501 20.4647 30.7501H28.5353C29.8703 30.7501 31.0125 29.7912 31.2437 28.4763L31.2437 28.4763L33.2387 17.13Z" fill="#292927"/>
-    </svg>
-  </div>
-</td>
+            </td>
 
             </tr>
             {/* Divider between rows */}
@@ -197,34 +242,17 @@ const Location = () => {
         ))}
     </tbody>
   </table>
-  
+                </div>
 
-  <div className="pagination">
-          <div className="per-page-selector">
-              <button className="dropdown-button">
-              10 Per Page<FaChevronDown />
-              </button>
+
           </div>
-          <div className="nav-buttons-container">
-              <button className="nav-button">←</button>
-              <button className="nav-button">→</button>
-          </div>
-      </div>
-  
-</div>
-
-
-            </div>
-
-
-         {/*table starts*/}
 
          
-
-
-      </div>
+          
+        </div>
+      )}
+    </div>
     </div>
   );
 };
-
-export default Location;
+export default Settings;
